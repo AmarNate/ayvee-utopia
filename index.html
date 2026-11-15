@@ -7344,6 +7344,9 @@ body.clipping #clipDot {
     closeSheets();
   }
 
+  // α1.3.1a: the Clip button runs the same thing as the C key
+  document.getElementById('clipBtn').addEventListener('click', clipToggle);
+
   // the clip has stopped: saves the video file and puts the button back
   function clipSaved(ty) {
     const blob = new Blob(clipChunks, { type: ty || 'video/webm' });
