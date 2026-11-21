@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- Ay-Vee Utopia · α1.3.1a (alpha 1.3.1a) · 15 Nov 2026: Clip mended (it never started recording; the saved file now names its type) and Tab clips carry the tab sound · from α1.3.1 · 3 Oct 2026 · built from α1.3 · the code laid out in named sections and steps (proven to draw the same picture), Focus keeps its time at any frame rate and every stack Pelvy holds does more, the ribbons drawn in screen tiles, the HUD in glass · was 0.4, then α1.0, α1.1, α1.2, α1.3 -->
+<!-- Ay-Vee Utopia · α1.3.2a · 17 Nov 2026: Wren 1.75 times wider with a wider light on the floor, his wall light a small lamp, his embers gold. Before it, α1.3.2 (alpha 1.3.2) · 16 Nov 2026: the light set per second (Bod-e no longer runs to white on a fast machine), Auto follows the song's own arc, Sensitivity sits by Auto, Bod-e's everyday and Focus, Gali and Wren redrawn to his sketches, Clip at 28 Mbps with grain and AAC sound where the browser can. Built on α1.3.1b. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Ay-Vee Utopia α1.3.1a</title>
-<meta name="version" content="α1.3.1a">
+<title>Ay-Vee Utopia α1.3.2a</title>
+<meta name="version" content="α1.3.2a">
 <meta name="release" content="3 Oct 2026: from α1.3 - the code restructured without changing the picture, Focus no longer slows down on a slow device, one, two or three stacks each do more (F spends one, S spends all), Bod-e's ribbons drawn in tiles, the HUD as glass panes with his mark">
 <style>
 /* Ay-Vee Utopia α1.3.1 · the HUD wears Frequency Realism: a dark field, baby blue as structure and a
@@ -1093,21 +1093,16 @@ input[type="range"]:focus-visible {
   background: linear-gradient(90deg, #3f7ea3, #8fd6ff);
   box-shadow: 0 0 8px var(--shine);
 }
-.sens {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 10px;
-  font-size: 12px;
-  color: var(--ink);
+/* α1.3.2: Sensitivity sits by Auto. It is a well like the volume's: the word, the slider, the number, the "?" */
+.vol.sens input {
+  width: 72px;
 }
-.sens input {
-  flex: 1;
-  min-width: 0;
-}
-#sensV {
-  font-family: var(--mono);
+.vol.sens #sensV {
+  min-width: 22px;
   color: var(--grn);
+}
+.vol.sens .qm {
+  flex: none;
 }
 .ctl {
   display: flex;
@@ -1836,6 +1831,21 @@ body.clipping #clipDot {
     padding: 8px 10px;
   }
 }
+/* α1.3.2: on a computer window narrower than 1760 px the bottom row has no room for one more well, so
+   Sensitivity sits just above the bar, over Auto, instead of pushing Focus under Pelvy's plate */
+@media (min-width: 960px) and (min-aspect-ratio: 5/4) and (max-width: 1759px) {
+  #tools {
+    position: relative;
+  }
+  #sensBar {
+    position: absolute;
+    left: 150px;
+    bottom: calc(100% + 8px);
+    box-shadow:
+      var(--sunk),
+      0 6px 14px rgba(0, 0, 0, 0.6);
+  }
+}
 
 /* ======================================================================
    THE PHONE
@@ -2062,6 +2072,17 @@ body.clipping #clipDot {
   #pause {
     order: 3;
   }
+  /* α1.3.2: Sensitivity takes the row right under Auto, the whole width, like the volume above */
+  #sensBar {
+    order: 3;
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+  #tools .grid #sensBar .qm {
+    width: auto;
+    min-width: 30px;
+    min-height: 30px;
+  }
   #tools .sep {
     grid-column: 1 / -1;
     width: auto;
@@ -2225,7 +2246,7 @@ body.clipping #clipDot {
 <div id="title" class="glass">
   <i class="spark" aria-hidden="true"></i>
   <span class="seat"><svg class="rune" aria-hidden="true"><use href="#rune" /></svg></span><svg class="lead" aria-hidden="true"><use href="#i-lead" /></svg>
-  <span class="name"><span class="n1">Ay-Vee <b>Utopia</b></span><span class="n2" id="titleSub">α1.3.1a · BOD-E</span></span>
+  <span class="name"><span class="n1">Ay-Vee <b>Utopia</b></span><span class="n2" id="titleSub">α1.3.2a · BOD-E</span></span>
 </div>
 <div id="meter" class="glass" title="What it hears: bass, synths, voice, highs"><b><i id="m0"></i></b><b><i id="m1"></i></b><b><i id="m2"></i></b><b><i id="m3"></i></b><span id="meterState">IDLE</span></div>
 <div id="read" class="well mono hide"></div>
@@ -2256,7 +2277,6 @@ body.clipping #clipDot {
     <div class="urlrow"><input type="url" id="url" placeholder="direct link to an .mp3 / .m4a"><button id="loadUrl">Load</button></div>
     <p class="now" id="now">Nothing loaded</p>
     <div class="seek" id="seek"><i id="barFill"></i></div>
-    <div class="sens" title="How far above its own floor a layer must rise to count."><span>Sensitivity</span><input type="range" id="sens" min="0.5" max="2.5" step="0.1" value="1.4"><span id="sensV">1.4</span><button class="qm" data-help="sens" aria-label="What sensitivity does">?</button></div>
     <div class="ctl"><button id="stopTrack">Clear queue</button><button id="closeTrack">Close</button></div>
     <p id="stat" class="mono"></p>
   </div></div>
@@ -2299,7 +2319,8 @@ body.clipping #clipDot {
       <button id="mic" title="Listen to the room">Mic off</button>
       <button id="tab" title="Read another browser tab (desktop Chrome)">Tab off</button>
       <i class="sep"></i>
-      <button id="mode" class="on" title="Auto follows the sound. Verse / Chorus force a mood.">Auto</button>
+      <button id="mode" class="on" title="Auto follows the song's own arc. Verse / Chorus force a mood.">Auto</button>
+      <div class="vol sens" id="sensBar" title="Sensitivity: how far above its own floor a layer must rise to count."><span class="vol-tag">sens</span><input type="range" id="sens" min="0.5" max="2.5" step="0.1" value="1.4" aria-label="Sensitivity"><span id="sensV">1.4</span><button class="qm" data-help="sens" aria-label="What sensitivity does">?</button></div>
       <button id="pause">Freeze</button>
       <i class="sep"></i>
       <button id="layersBtn" title="Layers (D)">Layers</button>
@@ -2417,7 +2438,7 @@ body.clipping #clipDot {
 
   /* the metadata db (statute, article 2): what must not drift between builds */
   const AV = Object.freeze({
-    version: 'α1.3.1a',
+    version: 'α1.3.2a',
     EMB: Object.freeze([
       Object.freeze({ id: 'bode', name: 'Bod-e', awake: true }),
       Object.freeze({ id: 'tyde', name: 'Gali', awake: true }),
@@ -2436,6 +2457,68 @@ body.clipping #clipDot {
     PELVY: Object.freeze({ companion: true, maxStacks: 3, band: [20, 60], echoPerStack: 100 }),
     POINTS: 900,
     LIGHTS: 7,
+    /* α1.3.2 · Bod-e's light is set per second. refFps: the frame rate whose picture is the reference
+       (ruled 16 Nov 2026: the dark, crisp one, on every machine). */
+    LIGHT: Object.freeze({ refFps: 20 }),
+    /* α1.3.2 · Bod-e's look (his yes on the sketch, 16 Nov 2026).
+       ring: the colour of her rings (magenta).  dayRings: how strong the two lesser rings are on an ordinary day.
+       focusRings: how many rings a Focus throws, by stacks spent (index 1, 2, 3).
+       strikes: how many strikes on her wall can be alive at once.  strikeLife: seconds one lasts.  dent: how far the wall gives.
+       wallLight: the wall lights' size as a share of the window's short side (smallest, largest), and how far
+       from her middle they sit as a share of the long side (nearest, farthest). They never cross her. */
+    BODE: Object.freeze({
+      ring: Object.freeze([255, 63, 200]),
+      dayRings: Object.freeze([0.08, 0.04]),
+      focusRings: Object.freeze([0, 3, 4, 5]),
+      strikes: 4,
+      strikeLife: 0.55,
+      dent: 0.14,
+      wallLight: Object.freeze({ small: 0.11, large: 0.17, near: 0.3, far: 0.47 }),
+    }),
+    /* α1.3.2 · Gali's look (his yes on the sketch, 16 Nov 2026: small far lamps, light paths, flowers on the water).
+       lamp: a lamp's size as a share of the window's short side.  lampHigh: how high the lamps hang (share of the height).
+       path: how wide a lamp's path of light is on the water, far and near (share of the width).
+       flat: how flat a flower lies on the water (1 would be a full circle). */
+    GALI: Object.freeze({ lamp: 0.13, lampHigh: 0.15, path: Object.freeze([0.016, 0.06]), flat: 0.42 }),
+    /* α1.3.2 · Wren's look (his yes on the sketch, 16 Nov 2026: a real cinder, cinders that land and stay).
+       body: his size as a share of the window's height, far and near, and how many facets his crust has.
+       embers: how many landed cinders can lie on the floor at once.  emberLife: seconds one takes to cool to nothing.
+       rings: floor rings alive at once.  ringLife: seconds one lasts.  floorReach: how much wider his light on the floor is than it was. */
+    WREN: Object.freeze({
+      body: Object.freeze({ far: 0.028, near: 0.07, facets: 9 }), // α1.3.2a: 1.75 times wider (his pick A on the sheet, 17 Nov 2026)
+      embers: 60,
+      emberLife: 6,
+      rings: 3,
+      ringLife: 1.6,
+      floorReach: 3.2, // α1.3.2a: was 2.2 (his pick A)
+      roomLamp: 0.1, // α1.3.2a: the cold lamp on his wall, its size as a share of the window's short side
+    }),
+    /* α1.3.2 · Clip. bits: the picture's bits per second (it was 8 million, and thin bright streaks on black
+       came out in blocks). grain: how strong the faint grain laid over a clip is (it keeps dark areas from banding). */
+    CLIP: Object.freeze({ bits: 28e6, grain: 0.03 }),
+    /* α1.3.2 · Auto follows the song's own arc (ruled 16 Nov 2026 on the chart).
+       weights: how much each band counts in "how loud is the song right now" (bass, synths, voice, highs).
+       listen: seconds that reading is averaged over.  open: where the top starts for a file.
+       rise / letGo: seconds the top takes to follow the song up, and to let go again.
+       slack + span: this far under its own top the song is still in its chorus; a span further down, in its verse.
+       up / down: seconds the arc takes to climb and to fall.  verse / reach: the intensity at the bottom, and how far the top adds.
+       patience / hurry: a song that has not once reached its top after this many seconds is simply quieter than
+       where the top started, so the top comes down to it this fast (seconds) until it has. */
+    AUTO: Object.freeze({
+      weights: Object.freeze([0.4, 0.25, 0.2, 0.15]),
+      listen: 1,
+      open: 0.62,
+      rise: 1.5,
+      letGo: 60,
+      slack: 0.03,
+      span: 0.1,
+      up: 0.6,
+      down: 2,
+      verse: 0.15,
+      reach: 1.45,
+      patience: 12,
+      hurry: 3,
+    }),
   });
   window.AV = AV;
 
@@ -2962,6 +3045,61 @@ body.clipping #clipDot {
     return s / ((b - a) * 255);
   }
 
+  /* α1.3.2 · Auto follows the song's own arc.
+     Before, Auto added up the four bands, and each band is read between its own floor and its own ceiling,
+     so every part of a song read full: Auto sat in Chorus from the first second to the last.
+     Now it holds how loud the song truly is right now (arcNow) against the loudest the song has been (arcTop).
+     At the top of its own range the song is in its chorus; a tenth under it, in its verse.
+     It only knows the song so far, so the verses before the first big chorus still read high. */
+  const arcAvg = [0, 0, 0, 0];
+  let arcNow = 0,
+    arcTop = AV.AUTO.open,
+    arc = 0,
+    arcFresh = 0,
+    arcWaited = 0, // seconds this song has played
+    arcFound = false, // has this song reached its own top yet
+    arcClock = performance.now(); // the arc keeps real time itself: the ears' own step is capped, and a busy machine would slow the arc down
+  // a new source: the arc starts over. a file starts from the usual top of a finished song;
+  // the mic and a tab have no usual level, so for their first second the top is simply what they hear.
+  function arcReset(fromFile) {
+    for (let i = 0; i < 4; i++) arcAvg[i] = 0;
+    arcNow = 0;
+    arc = 0;
+    arcTop = fromFile ? AV.AUTO.open : 0;
+    arcFresh = fromFile ? 0 : 1;
+    arcWaited = 0;
+    arcFound = false;
+    arcClock = performance.now();
+  }
+  // one listen of the arc. returns where the intensity should head.
+  function autoArc(raw, earsDt) {
+    const A = AV.AUTO;
+    // real seconds since the last listen (a long gap, a tab left in the background, counts as half a second at most)
+    const clockNow = performance.now(),
+      dt = earsDt > 0 ? clamp((clockNow - arcClock) / 1000, 0, 0.5) : 0;
+    arcClock = clockNow;
+    const k = 1 - Math.exp(-dt / A.listen);
+    arcNow = 0;
+    for (let i = 0; i < 4; i++) {
+      arcAvg[i] += (raw[i] - arcAvg[i]) * k;
+      arcNow += arcAvg[i] * A.weights[i];
+    }
+    if (arcFresh > 0) {
+      arcFresh -= dt;
+      arcTop = Math.max(arcTop, arcNow);
+    }
+    // a quiet song (a voice and a guitar, say) never comes near where the top starts: after a while the top comes to it
+    arcWaited += dt;
+    const letGo = !arcFound && arcWaited > A.patience ? A.hurry : A.letGo;
+    arcTop += (arcNow - arcTop) * (1 - Math.exp(-dt / (arcNow > arcTop ? A.rise : letGo)));
+    const want = clamp(1 - (arcTop - arcNow - A.slack) / A.span, 0, 1);
+    if (want > 0.9) arcFound = true;
+    arc += (want - arc) * (1 - Math.exp(-dt / (want > arc ? A.up : A.down)));
+    // the four bands still decide how much is going on at all: near silence stays quiet whatever the arc says
+    const busy = clamp((band[0] * 0.25 + band[1] * 0.32 + band[2] * 0.28 + band[3] * 0.15) * 1.35, 0, 1.8);
+    return (A.verse + A.reach * arc) * Math.min(1, busy / 1.2);
+  }
+
   // the ears: one listen. reads the sound, updates the four bands, the bass pulse, and sets off whatever a beat sets off.
   function analyse(dt) {
     if (!analyser) return;
@@ -2978,7 +3116,7 @@ body.clipping #clipDot {
     if (!(track && audio.src)) liveClock += dt;
     recStep();
     level += (sum / 4 - level) * 0.2;
-    targetI = clamp((band[0] * 0.25 + band[1] * 0.32 + band[2] * 0.28 + band[3] * 0.15) * 1.35, 0, 1.8);
+    targetI = autoArc(raw, dt);
     beatCool -= dt;
     voxCool -= dt;
     if (beat.isPeak && beatCool <= 0) onBeat(rise.flux, beat.thresh);
@@ -3094,6 +3232,7 @@ body.clipping #clipDot {
     } else {
       const q = P[Math.floor(Math.random() * P.length)];
       burst(q.sx, q.sy, Math.floor(cshift + Math.random() * 3) % COLS.length, 0.7 + p * 1.0);
+      if (shape === 'bode') bodeStrike(p);
     }
   }
   // the voice jumped above its own average: the swell (and Hingez's voice hinges)
@@ -3160,7 +3299,37 @@ body.clipping #clipDot {
       cp * (0.1 * Math.sin(3 * th + tt * 0.7) + 0.05 * Math.sin(2 * th + ph * 3 + tt * 0.4)) +
       0.06 * Math.sin(2 * ph - tt * 1.1) * (1 - Math.abs(dy) * 0.7) -
       0.06 * Math.cos(ph * 3.2) * cp;
-    return R * ell * b * (1 + punch * 0.16 + vox * 0.1);
+    return R * ell * (b + strikeDent(dx, dy, dz)) * (1 + punch * 0.16 + vox * 0.1);
+  }
+  /* α1.3.2 · her everyday story: she fights her own walls. On a beat she strikes one spot of her edge
+     (a direction from her middle). The wall gives there for a moment, the points near it lunge at it,
+     and a hard tick of light and one thin arc leave the spot. In a Focus there is no wall to strike. */
+  const strikes = [];
+  // a new strike. it lands on the part of her wall that shows as her outline from where the camera stands
+  // (her left or her right side, kept off her poles), so the wall is seen to give and the arc leaves into the dark.
+  function bodeStrike(power) {
+    if (ff.on && ff.shape === 'bode') return;
+    if (strikes.length >= AV.BODE.strikes) strikes.shift();
+    const a = (Math.random() * 2 - 1) * 0.64 + (Math.random() < 0.5 ? Math.PI : 0);
+    const u = unview(Math.cos(a), Math.sin(a), 0),
+      len = Math.hypot(u[0], u[1], u[2]) || 1;
+    strikes.push({ ux: u[0] / len, uy: u[1] / len, uz: u[2] / len, age: 0, pw: clamp(power, 0.3, 1) });
+  }
+  // how hard a strike is pushing right now: up fast, down slower (0 to 1)
+  function strikeNow(k) {
+    const q = k.age / AV.BODE.strikeLife;
+    return q >= 1 ? 0 : q < 0.18 ? q / 0.18 : 1 - (q - 0.18) / 0.82;
+  }
+  // how near a direction is to a strike's own (1 = the same spot, 0 = a good way off)
+  function strikeNear(k, dx, dy, dz) {
+    const dot = dx * k.ux + dy * k.uy + dz * k.uz;
+    return dot < 0.8 ? 0 : Math.exp(-(1 - dot) * 34);
+  }
+  // how far her edge gives in one direction, from every strike alive
+  function strikeDent(dx, dy, dz) {
+    let d = 0;
+    for (const k of strikes) d += AV.BODE.dent * k.pw * strikeNow(k) * strikeNear(k, dx, dy, dz);
+    return d;
   }
   // her points. how many: AV.POINTS (the db).
   const P = [];
@@ -3341,13 +3510,13 @@ body.clipping #clipDot {
       const s = STREAKS[i];
       if (s.db > 1) continue;
       x.fillStyle = DARK_RGB[s.ci];
-      x.globalAlpha = DARK_A * (s.db ? 0.5 : 0.9);
+      x.globalAlpha = LK * (DARK_A * (s.db ? 0.5 : 0.9));
       sliver(s.ax, s.ay, s.bx, s.by, (s.w * DARK_W) / 2, (s.w * DARK_W) / 2);
     }
     for (let i = 0; i < streakN; i++) {
       const s = STREAKS[i];
       x.fillStyle = COLS[s.ci];
-      x.globalAlpha = [0.95, 0.62, 0.3][s.db];
+      x.globalAlpha = LK * ([0.95, 0.62, 0.3][s.db]);
       sliver(s.ax, s.ay, s.bx, s.by, s.w * 0.275, s.w * 0.5);
     }
     if (GOV.q < 3)
@@ -3355,7 +3524,7 @@ body.clipping #clipDot {
         const s = STREAKS[i];
         if (s.db) continue;
         x.fillStyle = COLS[s.ci];
-        x.globalAlpha = 0.12;
+        x.globalAlpha = LK * (0.12);
         sliver(s.hx, s.hy, s.bx, s.by, s.w * 1.5, s.w * 1.5);
       }
   }
@@ -3406,14 +3575,14 @@ body.clipping #clipDot {
   }
   // the dark contour under a ribbon (the two nearer depths only)
   function ribbonDark(b, db) {
-    x.globalAlpha = DARK_A * (db ? 0.5 : 0.9);
+    x.globalAlpha = LK * (DARK_A * (db ? 0.5 : 0.9));
     x.lineWidth = (b.w / b.n) * DARK_W;
     x.stroke(b.tail);
   }
   // the coloured ribbon: a thin tail, a full head
   function ribbonCore(b, db) {
     const w = b.w / b.n;
-    x.globalAlpha = [0.95, 0.62, 0.3][db];
+    x.globalAlpha = LK * ([0.95, 0.62, 0.3][db]);
     x.lineWidth = w * 0.55;
     x.stroke(b.tail);
     x.lineWidth = w;
@@ -3421,7 +3590,7 @@ body.clipping #clipDot {
   }
   // the glow on the heads of the nearest ribbons
   function ribbonGlow(b) {
-    x.globalAlpha = 0.12;
+    x.globalAlpha = LK * (0.12);
     x.lineWidth = (b.w / b.n) * 3.0;
     x.stroke(b.head);
   }
@@ -3444,7 +3613,7 @@ body.clipping #clipDot {
         ribbonBuckets(ci, 1, ribbonGlow);
       }
     drawStreaks();
-    x.globalAlpha = 1;
+    x.globalAlpha = LK;
     x.lineCap = 'butt';
     x.lineJoin = 'miter';
   }
@@ -3514,6 +3683,8 @@ body.clipping #clipDot {
        roomRun     two stacks and up: how far the walls and the floor have let go (0 to 1)
        roomBeat    the bass right now, 0 to 1 (a slow pulse of its own when nothing is playing)
        roomRoll    how far the floor and the wall have run on top of their usual slide */
+  // LK: how much of one frame's light this frame adds (1 at the reference frame rate, less on a faster machine)
+  let LK = 1;
   let roomSwirl = 0,
     roomReach = 1,
     roomRun = 0,
@@ -3535,6 +3706,7 @@ body.clipping #clipDot {
     bodeCompanions();
     bodeWhiteFrames();
     bodeRings();
+    bodeLesserRings();
     bodeFigureSetup();
     for (const p of P) {
       pointHome(p);
@@ -3544,11 +3716,13 @@ body.clipping #clipDot {
       pointStreak(p);
     }
     bodeRibbons();
+    bodeStrikes();
     bodeBloom();
     bodeGrit();
     bodeIdleBursts();
     bodeBursts();
     bodeVignette();
+    x.globalAlpha = 1;
   }
 
   // the camera drifts around her, faster in chorus
@@ -3565,10 +3739,19 @@ body.clipping #clipDot {
     x.globalCompositeOperation = 'source-over';
     /* α1.3: the wipe is set per second, not per frame. at 60 fps it is exactly α1.2's; on a slower
        frame it wipes more per frame, so trails last the same time instead of growing longer */
-    hostFade = 1 - Math.pow(1 - lerp(0.28, 0.14, Ix / 1.6), dt * 60);
+    const fade60 = lerp(0.28, 0.14, Ix / 1.6);
+    hostFade = 1 - Math.pow(1 - fade60, dt * 60);
+    x.globalAlpha = 1;
     x.fillStyle = 'rgba(0,0,0,' + hostFade + ')';
     cshift += dt * (0.4 + highs * 3 + Ii * 1.5);
     x.fillRect(0, 0, W, H);
+    /* α1.3.2: her light is set per second too. The wipe above takes the same share away every second on any
+       machine, but everything she draws was added once per frame: three times as often at 60 frames a second
+       as at 20, so a fast machine piled up three times the light and the Focus ran to white.
+       LK is how much of a frame's light this frame adds, so that a second adds up to the same on every machine.
+       The reference is the picture at AV.LIGHT.refFps. Every pen stroke of hers is drawn through it. */
+    LK = Math.min(1, hostFade / (1 - Math.pow(1 - fade60, 60 / AV.LIGHT.refFps)));
+    x.globalAlpha = LK;
   }
 
   // the wall lights: each one breathes and flickers on its own. at least one is always lit.
@@ -3610,24 +3793,46 @@ body.clipping #clipDot {
     if (!(ff.on && ff.shape === 'bode')) return 1;
     return 1 + FF.w * (ff.level >= 2 ? 0.1 : 0.9);
   }
+  /* α1.3.2: the wall lights are small and sit on the walls. each one keeps to its own side of the window (the
+     two far ends of its longer side) and slides up and down that wall, so none ever crosses her or the middle.
+     each is a lamp: a small core you can point at, a tight glow, a falloff that ends. */
   function bodeWallLights() {
     x.globalCompositeOperation = 'lighter';
-    if (LY.lights)
-      for (const L of lights) {
+    if (LY.lights) {
+      const WL = AV.BODE.wallLight,
+        wide = W >= H,
+        long = wide ? W : H,
+        cross = wide ? H : W,
+        short = Math.min(W, H);
+      for (let i = 0; i < lights.length; i++) {
+        const L = lights[i];
         L.ang += L.drift * dt * speed * 0.6;
-        const lx = cx + Math.cos(L.ang) * W * L.orb,
-          ly = cy + Math.sin(L.ang) * H * L.orb * 1.05;
-        const rad = Math.min(W, H) * L.rad * (1 + punch * 0.15);
-        const g = x.createRadialGradient(lx, ly, 0, lx, ly, rad);
+        // where on its wall: a slow slide, never past 63 degrees off the wall's middle
+        const th = 1.1 * Math.sin(L.ang),
+          side = i % 2 ? 1 : -1,
+          along = side * long * (WL.near + (WL.far - WL.near) * Math.cos(th) * (0.75 + (L.orb - 0.36) * 2.5)),
+          across = cross * 0.5 * Math.sin(th);
+        const lx = cx + (wide ? along : across),
+          ly = cy + (wide ? across : along);
+        const size = lerp(WL.small, WL.large, (L.rad - 0.24) / 0.14);
+        const rad = short * size * (1 + punch * 0.15) * (1 + (bodeLightLift() - 1) * 0.5);
         const lc = COLS_RGB[(L.ci + Math.floor(cshift * 0.5)) % COLS.length];
-        g.addColorStop(0, rgba(lc, (0.26 + Ii * 0.12 + highs * 0.08) * L.b * bodeLightLift()));
-        g.addColorStop(0.5, rgba(lc, 0.1 * L.b));
+        const a = (0.3 + Ii * 0.14 + highs * 0.08) * L.b * bodeLightLift();
+        const g = x.createRadialGradient(lx, ly, 0, lx, ly, rad);
+        g.addColorStop(0, rgba(lc, a));
+        g.addColorStop(0.18, rgba(lc, a * 0.55));
+        g.addColorStop(0.5, rgba(lc, a * 0.15));
         g.addColorStop(1, 'rgba(0,0,0,0)');
         x.fillStyle = g;
         x.beginPath();
         x.arc(lx, ly, rad, 0, Math.PI * 2);
         x.fill();
+        x.fillStyle = rgba(lc, Math.min(1, a * 2.2));
+        x.beginPath();
+        x.arc(lx, ly, Math.max(2, rad * 0.06), 0, Math.PI * 2);
+        x.fill();
       }
+    }
   }
 
   // the room: the floor grid sliding toward you, the back wall grid sliding up
@@ -3713,6 +3918,20 @@ body.clipping #clipDot {
       x.arc(cx, (cy + R * 1.35) / 0.32, R * 1.4, 0, Math.PI * 2);
       x.fill();
       x.restore();
+      /* α1.3.2: her middle light is small and has a core, so it can be found through the swirlies */
+      const mr = R * (0.16 + punch * 0.04);
+      const g4 = x.createRadialGradient(cx, cy, 0, cx, cy, mr);
+      g4.addColorStop(0, rgba(bc, 0.55));
+      g4.addColorStop(0.2, rgba(bc, 0.28));
+      g4.addColorStop(1, 'rgba(0,0,0,0)');
+      x.fillStyle = g4;
+      x.beginPath();
+      x.arc(cx, cy, mr, 0, Math.PI * 2);
+      x.fill();
+      x.fillStyle = rgba(bc, 0.95);
+      x.beginPath();
+      x.arc(cx, cy, Math.max(1.5, R * 0.014), 0, Math.PI * 2);
+      x.fill();
     }
   }
 
@@ -3784,7 +4003,7 @@ body.clipping #clipDot {
       let bloomFade = ff.on && ff.shape === 'bode' ? clamp(1 - (FF.b * 1.9 + FF.w * 1.15), 0, 1) : 1;
       // three stacks: the frames do not fade with her body. they stay lit, and leave (see bodeWhiteFrames)
       if (framesLoose() > 0) bloomFade = Math.max(bloomFade, framesLoose() * 0.85);
-      x.globalAlpha = bloomFade;
+      x.globalAlpha = LK * (bloomFade);
       x.strokeStyle = 'rgba(10,8,16,0.75)';
       x.lineWidth = ew * 3.2;
       x.stroke();
@@ -3794,7 +4013,7 @@ body.clipping #clipDot {
       x.strokeStyle = 'rgba(255,255,255,' + lerp(0.5, 0.9, Ii) * aMul + ')';
       x.lineWidth = ew;
       x.stroke();
-      x.globalAlpha = 1;
+      x.globalAlpha = LK;
     }
   };
   // draws the two white frames
@@ -3864,6 +4083,69 @@ body.clipping #clipDot {
     }
   }
 
+  // one flat ring of her own colour around a spot: a soft line under a crisp one
+  function magentaRing(mx, my, rx, ry, alpha, from, to, wide) {
+    if (alpha <= 0.004) return;
+    const mc = AV.BODE.ring,
+      w = wide || 1;
+    x.beginPath();
+    x.ellipse(mx, my, rx, ry, 0, from === undefined ? 0 : from, to === undefined ? Math.PI * 2 : to);
+    x.strokeStyle = rgba(mc, alpha * 0.35);
+    x.lineWidth = 3.6 * w;
+    x.stroke();
+    x.strokeStyle = rgba(mc, alpha);
+    x.lineWidth = 1.2 * w;
+    x.stroke();
+  }
+  /* α1.3.2 · the lesser rings: on an ordinary day two thin rings of the Focus's colour hang around her, faint.
+     they are what the Focus turns up. they step back while a Focus has the room. */
+  function bodeLesserRings() {
+    if (!LY.edge) return;
+    const away = bodeFF ? clamp(1 - FF.b * 2 - FF.w * 2, 0, 1) : 1;
+    if (away <= 0) return;
+    x.globalCompositeOperation = 'lighter';
+    const breathe = 1 + punch * 0.03,
+      D2 = AV.BODE.dayRings;
+    magentaRing(bx, by, R * 1.5 * breathe, R * 1.78 * breathe, D2[0] * (0.7 + 0.3 * Ii) * away);
+    magentaRing(bx, by, R * 1.9 * breathe, R * 2.2 * breathe, D2[1] * (0.7 + 0.3 * Ii) * away);
+  }
+  // draws every strike alive: the tick of light on her wall, and the thin arc leaving it. then ages them.
+  function bodeStrikes() {
+    if (!strikes.length) return;
+    x.globalCompositeOperation = 'lighter';
+    for (let i = strikes.length - 1; i >= 0; i--) {
+      const k = strikes[i];
+      const r = bound3(k.ux, k.uy, k.uz, t);
+      const v = view(k.ux * r, k.uy * r, k.uz * r);
+      const sp = proj(v[0], v[1], v[2]);
+      const out = Math.atan2(sp[1] - by, sp[0] - bx),
+        q = k.age / AV.BODE.strikeLife,
+        left = 1 - q;
+      // the tick: a few short hard lines, only in the first fifth of the strike
+      if (q < 0.2) {
+        for (let n = 0; n < 7; n++) {
+          const a = out + (Math.random() - 0.5) * 2.2,
+            len = (14 + Math.random() * 30) * (0.6 + 0.4 * k.pw) * sp[2];
+          x.strokeStyle = 'rgba(255,' + Math.round(200 + Math.random() * 55) + ',' + Math.round(210 + Math.random() * 45) + ',' + 0.8 * (1 - q / 0.2) + ')';
+          x.lineWidth = 1.5;
+          x.beginPath();
+          x.moveTo(sp[0], sp[1]);
+          x.lineTo(sp[0] + Math.cos(a) * len, sp[1] + Math.sin(a) * len);
+          x.stroke();
+        }
+      }
+      // the arc: it leaves the wall and thins out
+      const ar = (22 + q * 95) * sp[2];
+      const hard = 0.55 + 0.45 * k.pw;
+      magentaRing(sp[0], sp[1], ar, ar, 0.95 * left * hard, out - 0.9, out + 0.9, 1.5);
+      // a second, fainter arc follows the first out
+      if (q > 0.25) magentaRing(sp[0], sp[1], ar * 0.62, ar * 0.62, 0.5 * left * hard, out - 0.75, out + 0.75);
+      k.age += dt;
+      if (k.age >= AV.BODE.strikeLife) strikes.splice(i, 1);
+    }
+    x.globalCompositeOperation = 'source-over';
+  }
+
   // what all 900 points share this frame: the swirl speed, the twin vortex, the arms, the grit, the width
   function bodeFigureSetup() {
     // figure - normal blend: overlap can never fuse to white
@@ -3883,6 +4165,10 @@ body.clipping #clipDot {
     gritSpawn = 0;
   }
 
+  // α1.3.2: how far out a point's home is (0 her middle, 1 her wall). she crowds her wall: that is where the fight is.
+  function hrDay(p) {
+    return p.hr + (Math.sqrt(p.hr) - p.hr) * 0.6;
+  }
   // one point: where its home is this frame (in Focus, somewhere in the whole room)
   function pointHome(p) {
     ((ox = p.px), (oy = p.py), (oz = p.pz));
@@ -3909,12 +4195,16 @@ body.clipping #clipDot {
     const arm = Math.sin(p.az * 3 + t * arms) * 0.08 * Ii;
     p.lg = Math.max(0, (p.lg || 0) - dt * 1.7);
     if (punch > 0.45 && Math.random() < chance(0.018)) p.lg = 0.55 + Math.random() * 0.5;
+    for (const k of strikes) {
+      const near = strikeNear(k, ux0, uy0, uz0) * strikeNow(k);
+      if (near > 0.2) p.lg = Math.max(p.lg, near * k.pw);
+    }
     const strain =
       (0.5 + 0.5 * Math.sin(t * 0.8 + p.ph * 2.1)) * (0.1 + Ii * 0.22) + punch * 0.2 + p.lg * 0.4;
     const bnd0 = bound3(ux0, uy0, uz0, t);
     let home =
       bnd0 *
-        clamp(p.hr * (1 + 0.1 * Math.sin(t * 0.9 + p.ph) * (1 + Ii * 0.5)) + arm, 0.08, 0.99) *
+        clamp(hrDay(p) * (1 + 0.1 * Math.sin(t * 0.9 + p.ph) * (1 + Ii * 0.5)) + arm, 0.08, 0.99) *
         (1 + strain) +
       punch * R * 0.3;
     /* α1.1: the home never sits past her own edge. it used to (strain and punch pushed it
@@ -4101,11 +4391,11 @@ body.clipping #clipDot {
           lerp(0.35, 0.08, depth) +
           ')';
         x.lineWidth = p.sz * lw * s1[2] * 2.4;
-        x.globalAlpha = 1;
+        x.globalAlpha = LK;
         x.stroke();
         x.strokeStyle = col;
         x.lineWidth = p.sz * lw * s1[2] * 1.3;
-        x.globalAlpha = lerp(0.45, 0.12, depth);
+        x.globalAlpha = LK * (lerp(0.45, 0.12, depth));
         x.stroke();
       }
     }
@@ -4113,7 +4403,7 @@ body.clipping #clipDot {
 
   // strokes all the ribbons, then empties the buckets
   function bodeRibbons() {
-    x.globalAlpha = 1;
+    x.globalAlpha = LK;
     if (LY.swirl) drawRibbons();
     ribbonReset();
   }
@@ -4123,24 +4413,26 @@ body.clipping #clipDot {
     if (bodeFF && (FF.b > 0.01 || FF.w > 0.01)) {
       const prev = x.globalCompositeOperation;
       x.globalCompositeOperation = 'lighter';
-      const rad = R * (0.5 + FF.b * 3.4 + FF.w * 1.9);
+      /* α1.3.2: the bloom no longer has a white core. It is her own colour, it stays near her, and it is gone
+         once she is the room, so the middle is left dark with her light whole in it. The release is carried
+         by the rings: the lesser rings of her everyday, turned all the way up. More stacks, more rings. */
+      const rad = R * (0.5 + FF.b * 1.7);
       const gB = x.createRadialGradient(bx, by, 0, bx, by, Math.max(2, rad));
-      const core = clamp(FF.b * 0.52 + FF.w * 0.1, 0, 0.58);
-      gB.addColorStop(0, 'rgba(255,255,255,' + core + ')');
-      gB.addColorStop(0.22, 'rgba(190,215,255,' + core * 0.55 + ')');
-      gB.addColorStop(0.62, 'rgba(120,150,255,' + core * 0.2 + ')');
+      const core = clamp(FF.b * 0.4, 0, 0.4);
+      const mc = AV.BODE.ring;
+      gB.addColorStop(0, rgba(mc, core * 0.5));
+      gB.addColorStop(0.3, rgba(mc, core * 0.22));
       gB.addColorStop(1, 'rgba(0,0,0,0)');
       x.fillStyle = gB;
       x.beginPath();
       x.arc(bx, by, Math.max(2, rad), 0, Math.PI * 2);
       x.fill();
-      if (FF.b > 0.02) {
-        const rw = R * (0.35 + FF.b * 2.9);
-        x.strokeStyle = 'rgba(225,235,255,' + FF.b * 0.42 + ')';
-        x.lineWidth = 1.2 + FF.b * 3.4;
-        x.beginPath();
-        x.arc(bx, by, rw, 0, Math.PI * 2);
-        x.stroke();
+      const rings = AV.BODE.focusRings[ff.level] || 3,
+        grow = clamp(FF.b * 1.6 + FF.w, 0, 1),
+        beat = 1 + (ff.level >= 2 ? roomBeat * 0.04 : 0) + punch * 0.02;
+      for (let i = 0; i < rings; i++) {
+        const rr = R * (0.85 + i * 0.8) * (0.3 + 0.7 * grow) * beat;
+        magentaRing(bx, by, rr, rr * 0.93, clamp(FF.b * 1.1 + FF.w * 0.6, 0, 0.95) * (1 - i * 0.17));
       }
       x.globalCompositeOperation = prev;
     }
@@ -5113,6 +5405,11 @@ body.clipping #clipDot {
     kin: [],
     wild: 0,
     goto: null,
+    embers: [], // α1.3.2: cinders that landed and lie cooling on the floor
+    rings: [], // α1.3.2: the rings he drops on the floor when he cracks
+    crust: null, // α1.3.2: the shape of his body (how far out each facet's corner sits)
+    spin: 0,
+    was: null, // α1.3.2: where his body was drawn last frame, and how big
   };
   // small, fast cinders: n of them, flying off her at speed spd
   function wrenCinders(n, spd) {
@@ -5126,6 +5423,7 @@ body.clipping #clipDot {
         vy: Math.random() * 0.8 * spd,
         vz: Math.sin(a) * spd * 0.5 * (0.3 + Math.random()),
         l: 0.6 + Math.random() * 0.6,
+        lands: k % 3 === 0, // α1.3.2: one cinder in three is thrown to land: it does not burn out in the air
       });
     }
   }
@@ -5183,6 +5481,8 @@ body.clipping #clipDot {
     // she cracks apart on the kick: shards fly out, the core goes dark for a beat, then she re-lights
     cyn.flare = Math.max(cyn.flare, p);
     cyn.dim = Math.max(cyn.dim, 0.35 + p * 0.5);
+    if (cyn.rings.length >= AV.WREN.rings) cyn.rings.shift();
+    cyn.rings.push({ x: cyn.x, z: cyn.z, age: 0, pw: p });
     const n = Math.round(14 + p * 40);
     for (let k = 0; k < n; k++) {
       const a = Math.random() * Math.PI * 2,
@@ -5220,6 +5520,7 @@ body.clipping #clipDot {
     wrenDust();
     wrenFloorLight();
     wrenCoals();
+    wrenEmbers();
     wrenTrail();
     wrenCindersDraw();
     wrenKin();
@@ -5329,6 +5630,14 @@ body.clipping #clipDot {
     hostFade = lerp(0.2, 0.12, Ii);
     x.fillStyle = 'rgba(0,0,0,' + hostFade + ')';
     x.fillRect(0, 0, W, H);
+    /* α1.3.2: his body is a solid thing now, so the place he stood last frame is cleared outright.
+       left to the slow wipe, a moving body smeared into a tube of its own copies. */
+    if (cyn.was) {
+      x.fillStyle = 'rgba(0,0,0,0.94)';
+      x.beginPath();
+      x.arc(cyn.was[0], cyn.was[1], cyn.was[2] * 1.3, 0, Math.PI * 2);
+      x.fill();
+    }
   }
 
   function wrenRoomLight() {
@@ -5339,12 +5648,22 @@ body.clipping #clipDot {
       L.ang += L.drift * dt * 0.4;
       const lx = cx + Math.cos(L.ang) * W * 0.42,
         ly = H * 0.2;
-      const gr = x.createRadialGradient(lx, ly, 0, lx, ly, Math.min(W, H) * 0.35);
-      gr.addColorStop(0, 'rgba(55,65,110,' + (0.09 + Ii * 0.04) + ')');
+      /* α1.3.2a: the cold light is a small lamp now (it was an edgeless glow a third of the window wide):
+         same place, same colour, a core you can point at, a tight glow, a falloff that ends */
+      const rad = Math.min(W, H) * AV.WREN.roomLamp,
+        a = 0.11 + Ii * 0.05;
+      const gr = x.createRadialGradient(lx, ly, 0, lx, ly, rad);
+      gr.addColorStop(0, 'rgba(70,84,150,' + a + ')');
+      gr.addColorStop(0.2, 'rgba(70,84,150,' + a * 0.5 + ')');
+      gr.addColorStop(0.55, 'rgba(70,84,150,' + a * 0.12 + ')');
       gr.addColorStop(1, 'rgba(0,0,0,0)');
       x.fillStyle = gr;
       x.beginPath();
-      x.arc(lx, ly, Math.min(W, H) * 0.35, 0, Math.PI * 2);
+      x.arc(lx, ly, rad, 0, Math.PI * 2);
+      x.fill();
+      x.fillStyle = 'rgba(96,116,206,0.55)';
+      x.beginPath();
+      x.arc(lx, ly, Math.max(2, rad * 0.055), 0, Math.PI * 2);
       x.fill();
     }
   }
@@ -5364,7 +5683,72 @@ body.clipping #clipDot {
         x.moveTo(0, P0[3]);
         x.lineTo(W, P0[3]);
         x.stroke();
+        /* α1.3.2: where a floor line runs through his light it turns to gold: that is what makes it a floor */
+        if (LY.wfloor) {
+          const F = cynProj(cyn.x, 0, cyn.z);
+          const pool = lerp(40, 120, cyn.z) * AV.WREN.floorReach * (0.7 + cyn.heat * 0.6) * (1 - cyn.dim * 0.8);
+          const reach = pool * (1 - Math.abs(P0[3] - F[3]) / (pool * 0.35));
+          if (reach > 4) {
+            const gl = x.createLinearGradient(F[0] - reach, 0, F[0] + reach, 0);
+            gl.addColorStop(0, 'rgba(255,170,70,0)');
+            gl.addColorStop(0.5, 'rgba(255,190,96,' + (0.1 + cyn.heat * 0.1) + ')');
+            gl.addColorStop(1, 'rgba(255,170,70,0)');
+            x.strokeStyle = gl;
+            x.lineWidth = 1.2;
+            x.beginPath();
+            x.moveTo(F[0] - reach, P0[3]);
+            x.lineTo(F[0] + reach, P0[3]);
+            x.stroke();
+          }
+        }
       }
+      // α1.3.2: the rings he drops when he cracks: each widens on the floor and thins out
+      for (let k = cyn.rings.length - 1; k >= 0; k--) {
+        const q = cyn.rings[k];
+        q.age += dt;
+        const g = q.age / AV.WREN.ringLife;
+        if (g >= 1) {
+          cyn.rings.splice(k, 1);
+          continue;
+        }
+        const F = cynProj(q.x, 0, q.z);
+        const rx = (30 + g * 190) * F[2] * (0.6 + q.pw * 0.6) * (H / 720);
+        x.strokeStyle = 'rgba(255,182,72,' + (1 - g) * 0.22 + ')';
+        x.lineWidth = 1.2;
+        x.beginPath();
+        x.ellipse(F[0], F[3], rx, rx * 0.26, 0, 0, Math.PI * 2);
+        x.stroke();
+      }
+    }
+  }
+  // α1.3.2: the embers on the floor: gold when they land, then orange, then red, then gone
+  function wrenEmbers() {
+    if (!LY.wcoals) {
+      cyn.embers.length = 0;
+      return;
+    }
+    for (let k = cyn.embers.length - 1; k >= 0; k--) {
+      const e = cyn.embers[k];
+      e.age += dt;
+      const g = e.age / AV.WREN.emberLife;
+      if (g >= 1) {
+        cyn.embers.splice(k, 1);
+        continue;
+      }
+      // α1.3.2a: plainly gold, then orange, then red. drawn over what is there, never added to it:
+      // added, the gold piled up frame on frame and the embers read as white dots
+      const col = g < 0.35 ? '255,184,72' : g < 0.7 ? '255,112,40' : '179,38,26';
+      x.globalCompositeOperation = 'source-over';
+      const P1 = cynProj(e.x, 0.005, e.z);
+      const r = lerp(0.9, 2.6, (P1[2] - 0.35) / 0.65) * (1.2 - g * 0.5);
+      x.fillStyle = 'rgba(' + col + ',' + (1 - g) * 0.015 + ')';
+      x.beginPath();
+      x.arc(P1[0], P1[1], r * 3.2, 0, Math.PI * 2);
+      x.fill();
+      x.fillStyle = 'rgba(' + col + ',' + (1 - g * 0.8) * 0.9 + ')';
+      x.beginPath();
+      x.arc(P1[0], P1[1], r, 0, Math.PI * 2);
+      x.fill();
     }
   }
 
@@ -5402,9 +5786,13 @@ body.clipping #clipDot {
     // her light on the floor: tight, right under her, deeper shadow the nearer she is
     if (LY.wfloor) {
       const P0 = cynProj(cyn.x, 0, cyn.z);
-      const rr = lerp(40, 120, cyn.z) * (0.7 + cyn.heat * 0.6) * (1 - cyn.dim * 0.8);
-      const gr = x.createRadialGradient(P0[0], P0[3], 0, P0[0], P0[3], rr);
-      gr.addColorStop(0, 'rgba(255,120,40,' + (0.1 + cyn.heat * 0.18) * (1 - cyn.dim) + ')');
+      const rr = lerp(40, 120, cyn.z) * AV.WREN.floorReach * (0.7 + cyn.heat * 0.6) * (1 - cyn.dim * 0.8);
+      /* α1.3.1 fix (9 Oct 2026): the glow is centred where its shape is drawn. the shape is drawn squashed
+         to about a third of its height, and the glow's centre was not squashed with it, so the shape was
+         filled with nothing: 0 pixels of 840,000 changed with the switch. now 15,051 do. */
+      const gr = x.createRadialGradient(P0[0], P0[3] / 0.35, 0, P0[0], P0[3] / 0.35, rr);
+      gr.addColorStop(0, 'rgba(255,120,40,' + (0.06 + cyn.heat * 0.1) * (1 - cyn.dim) + ')');
+      gr.addColorStop(0.4, 'rgba(255,120,40,' + (0.02 + cyn.heat * 0.035) * (1 - cyn.dim) + ')');
       gr.addColorStop(1, 'rgba(0,0,0,0)');
       x.fillStyle = gr;
       x.save();
@@ -5468,6 +5856,7 @@ body.clipping #clipDot {
     for (let k = cyn.cinders.length - 1; k >= 0; k--) {
       const q = cyn.cinders[k];
       q.l -= dt * 1.8;
+      if (q.lands && !q.landed && q.l < 0.3) q.l = 0.3;
       if (q.l <= 0) {
         cyn.cinders.splice(k, 1);
         continue;
@@ -5479,9 +5868,17 @@ body.clipping #clipDot {
       if (q.y < 0) {
         q.y = 0;
         q.vy *= -0.2;
+        /* α1.3.2: where a cinder lands it stays, as an ember cooling on the floor */
+        if (!q.landed) {
+          q.landed = true; // landed or not on the floor we can see, it stops being held alive
+          if (q.lands && LY.wcoals && q.x > 0 && q.x < 1 && q.z > 0.02 && q.z < 1) {
+            if (cyn.embers.length >= AV.WREN.embers) cyn.embers.shift();
+            cyn.embers.push({ x: q.x, z: q.z, age: 0 });
+          }
+        }
       }
       const P = cynProj(q.x, q.y, q.z);
-      const rr = lerp(0.5, 1.4, P[2]) * (0.4 + q.l * 0.6);
+      const rr = lerp(0.6, 1.7, P[2]) * (0.4 + q.l * 0.6);
       const pm2 = x.globalCompositeOperation;
       x.globalCompositeOperation = 'source-over';
       x.fillStyle = 'rgba(8,3,1,0.6)';
@@ -5521,54 +5918,115 @@ body.clipping #clipDot {
       const P = cynProj(wx, wy, wz);
       x.fillStyle = 'rgba(255,230,180,0.95)';
       x.beginPath();
-      x.arc(P[0], P[1], lerp(1.0, 2.4, P[2]), 0, Math.PI * 2);
+      x.arc(P[0], P[1], lerp(1.4, 3.2, P[2]), 0, Math.PI * 2);
       x.fill();
       x.fillStyle = 'rgba(255,140,40,0.35)';
       x.beginPath();
-      x.arc(P[0], P[1], lerp(1.0, 2.4, P[2]) * 2, 0, Math.PI * 2);
+      x.arc(P[0], P[1], lerp(1.4, 3.2, P[2]) * 2, 0, Math.PI * 2);
       x.fill();
     }
   }
 
+  /* α1.3.2 · his body is a real cinder (it was one point, 2 to 4 pixels across). a dark crust in facets, fire
+     in the cracks between them, the hottest point low in him, a tight glow and no more. he turns slowly.
+     when he cracks on a kick (cyn.dim) the fire drops out of the cracks for a beat, then he re-lights.
+     hotter is still denser and whiter. heat climbs off his back in thin strings. */
   function wrenBody() {
-    // her: one point. hot core, almost no halo. hotter = denser and whiter, never bigger.
-    {
-      const P = cynProj(cyn.x, cyn.y, cyn.z);
-      const lit = 1 - cyn.dim;
-      const r = lerp(1.6, 4.2, P[2]) * (0.7 + cyn.flare * 0.6);
-      const hw = clamp(cyn.heat, 0, 1);
-      const pm = x.globalCompositeOperation;
-      x.globalCompositeOperation = 'source-over';
-      x.fillStyle = 'rgba(8,3,1,0.82)';
-      x.beginPath();
-      x.arc(P[0], P[1], r * 1.7, 0, Math.PI * 2);
-      x.fill();
-      x.strokeStyle = 'rgba(40,14,4,0.9)';
-      x.lineWidth = 1.4;
-      x.beginPath();
-      x.arc(P[0], P[1], r * 1.7, 0, Math.PI * 2);
-      x.stroke();
-      x.globalCompositeOperation = pm;
-      x.fillStyle =
-        'rgba(255,' + Math.round(90 + hw * 160) + ',' + Math.round(20 + hw * 200) + ',' + 0.95 * lit + ')';
-      x.beginPath();
-      x.arc(P[0], P[1], r, 0, Math.PI * 2);
-      x.fill();
-      x.fillStyle = 'rgba(255,246,226,' + 0.75 * lit + ')';
-      x.beginPath();
-      x.arc(P[0], P[1], r * 0.42, 0, Math.PI * 2);
-      x.fill();
-      x.fillStyle = 'rgba(255,' + Math.round(110 + hw * 60) + ',30,' + (0.25 + hw * 0.25) * lit + ')';
-      x.beginPath();
-      x.arc(P[0], P[1], r * 1.9, 0, Math.PI * 2);
-      x.fill();
-      if (cyn.flare > 0.2) {
-        x.fillStyle = 'rgba(255,220,180,' + cyn.flare * 0.35 * lit + ')';
-        x.beginPath();
-        x.arc(P[0], P[1], r * (2.6 + cyn.flare * 2), 0, Math.PI * 2);
-        x.fill();
-      }
+    const P = cynProj(cyn.x, cyn.y, cyn.z);
+    const B = AV.WREN.body;
+    const lit = 1 - cyn.dim,
+      hw = clamp(cyn.heat, 0, 1),
+      fire = 0.3 + 0.7 * lit * (0.45 + 0.55 * hw); // he never goes fully dark: a cinder keeps its fire
+    const r = H * lerp(B.far, B.near, (P[2] - 0.35) / 0.65) * (0.9 + cyn.flare * 0.25);
+    if (!cyn.crust) {
+      cyn.crust = [];
+      for (let i = 0; i < B.facets; i++) cyn.crust.push(0.74 + Math.random() * 0.4);
     }
+    cyn.spin += dt * (0.25 + hw * 0.5);
+    const n = cyn.crust.length,
+      px = [],
+      py = [];
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 + cyn.spin;
+      px.push(P[0] + Math.cos(a) * r * cyn.crust[i] * 0.92);
+      py.push(P[1] + Math.sin(a) * r * cyn.crust[i] * 1.06);
+    }
+    const hx = P[0] + r * 0.08,
+      hy = P[1] + r * 0.3; // the hottest point: low in him
+    const pm = x.globalCompositeOperation;
+    // heat climbing off his back
+    x.globalCompositeOperation = 'lighter';
+    x.lineWidth = 1;
+    for (let k = 0; k < 5; k++) {
+      const off = (k - 2) * r * 0.32,
+        tall = r * (2.4 + 0.5 * k + hw * 1.5);
+      x.strokeStyle = 'rgba(255,170,90,' + 0.03 * fire + ')';
+      x.beginPath();
+      for (let i = 0; i <= 12; i++) {
+        const q = i / 12;
+        const sx = P[0] + off * (1 - q * 0.4) + Math.sin(q * 5 + k * 1.7 + t * 2.2) * r * 0.28 * q,
+          sy = P[1] - r * 0.8 - q * tall;
+        if (i === 0) x.moveTo(sx, sy);
+        else x.lineTo(sx, sy);
+      }
+      x.stroke();
+    }
+    // his glow: tight
+    const gl = x.createRadialGradient(P[0], P[1] + r * 0.1, r * 0.5, P[0], P[1] + r * 0.1, r * 2.8);
+    gl.addColorStop(0, 'rgba(255,122,30,' + 0.07 * fire + ')');
+    gl.addColorStop(1, 'rgba(0,0,0,0)');
+    x.fillStyle = gl;
+    x.beginPath();
+    x.arc(P[0], P[1] + r * 0.1, r * 2.8, 0, Math.PI * 2);
+    x.fill();
+    if (cyn.flare > 0.2) {
+      x.fillStyle = 'rgba(255,220,180,' + cyn.flare * 0.05 * lit + ')';
+      x.beginPath();
+      x.arc(P[0], P[1], r * (1.6 + cyn.flare * 1.2), 0, Math.PI * 2);
+      x.fill();
+    }
+    // the dark he sits in, so his trail does not run through him
+    x.globalCompositeOperation = 'source-over';
+    x.fillStyle = 'rgba(8,3,1,0.82)';
+    x.beginPath();
+    x.arc(P[0], P[1], r * 1.06, 0, Math.PI * 2);
+    x.fill();
+    // the crust, facet by facet: fire at the hot point, cooling toward each edge
+    for (let i = 0; i < n; i++) {
+      const j = (i + 1) % n;
+      const mx = (px[i] + px[j]) / 2,
+        my = (py[i] + py[j]) / 2;
+      const low = clamp((my - (P[1] - r)) / (2 * r), 0, 1);
+      const fg = x.createLinearGradient(hx, hy, mx, my);
+      fg.addColorStop(0, 'rgb(255,' + Math.round(150 + 76 * fire) + ',' + Math.round(60 + 90 * fire) + ')');
+      fg.addColorStop(
+        0.45,
+        'rgb(' + Math.round(lerp(150, 255, fire)) + ',' + Math.round(lerp(50, 120 + 60 * low, fire)) + ',' + Math.round(lerp(14, 34, fire)) + ')',
+      );
+      fg.addColorStop(1, 'rgb(' + Math.round(70 + 90 * low * fire) + ',' + Math.round(18 + 26 * low * fire) + ',8)');
+      x.fillStyle = fg;
+      x.beginPath();
+      x.moveTo(hx, hy);
+      x.lineTo(px[i], py[i]);
+      x.lineTo(px[j], py[j]);
+      x.closePath();
+      x.fill();
+    }
+    // the cracks between the facets: where the fire shows
+    x.strokeStyle = 'rgba(255,196,110,' + 0.75 * fire + ')';
+    x.lineWidth = Math.max(1, r * 0.035);
+    x.beginPath();
+    for (let i = 0; i < n; i++) {
+      x.moveTo(hx, hy);
+      x.lineTo(px[i], py[i]);
+    }
+    x.stroke();
+    x.fillStyle = 'rgba(255,238,196,' + 0.95 * lit + ')';
+    x.beginPath();
+    x.arc(hx, hy, Math.max(1.5, r * 0.1), 0, Math.PI * 2);
+    x.fill();
+    x.globalCompositeOperation = pm;
+    cyn.was = [P[0], P[1], r];
   }
 
   function wrenShards() {
@@ -5631,7 +6089,11 @@ body.clipping #clipDot {
   // ---- Tyde: a sheet of water seen from just above ----
   const TX = 96,
     TZ = 44;
+  // one row of her sheet on the screen, worked out once and used by every stroke of that row
+  const rowX = new Float32Array(TX),
+    rowY = new Float32Array(TX);
   const tyde = {
+    lamps: [],
     h: new Float32Array(TX * TZ),
     swells: [],
     glints: [],
@@ -5711,12 +6173,12 @@ body.clipping #clipDot {
     galiMood();
     galiWipe();
     galiLights();
-    galiFlowers();
     galiSwells();
     galiHeights();
     galiFishSwim();
     galiFocusBand();
     galiRows();
+    galiFlowers();
     galiFoam();
     galiDrops();
     galiGlints();
@@ -5767,29 +6229,52 @@ body.clipping #clipDot {
     x.fillRect(0, 0, W, H);
   }
 
+  /* α1.3.2: her three lights are small lamps far off over the water (they were glows nearly half the window
+     wide, and where two met they ran to flat white discs). each has a core, a tight glow and a falloff that
+     ends. where each one hangs is kept (tyde.lamps), because each lays a path of light down her water. */
   function galiLights() {
-    // lights: cooler, lower, behind the water
     x.globalCompositeOperation = 'lighter';
+    tyde.lamps.length = 0;
     if (LY.glights)
       for (let i = 0; i < 3; i++) {
         const L = lights[i];
         L.ang += L.drift * dt * galiStir;
         const lx = cx + Math.cos(L.ang) * W * 0.4,
-          ly = H * 0.3 + Math.sin(L.ang * 0.7) * H * 0.08;
-        const rad = Math.min(W, H) * 0.45;
-        const lc = TCOLS[(i + Math.floor(cshift * 0.3)) % TCOLS.length];
+          ly = H * AV.GALI.lampHigh + Math.sin(L.ang * 0.7) * H * 0.06;
+        const rad = Math.min(W, H) * AV.GALI.lamp;
+        const lc = ice(TCOLS[(i + Math.floor(cshift * 0.3)) % TCOLS.length]);
+        const a = 0.05 + Ii * 0.03;
         const gr = x.createRadialGradient(lx, ly, 0, lx, ly, rad);
-        gr.addColorStop(0, rgba(lc, 0.16 + Ii * 0.08));
+        gr.addColorStop(0, rgba(lc, a));
+        gr.addColorStop(0.2, rgba(lc, a * 0.5));
+        gr.addColorStop(0.55, rgba(lc, a * 0.12));
         gr.addColorStop(1, 'rgba(0,0,0,0)');
         x.fillStyle = gr;
         x.beginPath();
         x.arc(lx, ly, rad, 0, Math.PI * 2);
         x.fill();
+        x.fillStyle = rgba(lc, 0.5);
+        x.beginPath();
+        x.arc(lx, ly, Math.max(2, rad * 0.055), 0, Math.PI * 2);
+        x.fill();
+        tyde.lamps.push({ x: lx, c: lc, i: i });
       }
+  }
+  // α1.3.2: a light of hers never goes to plain white: its palest is ice (the red held back a little)
+  function ice(c) {
+    return [Math.min(c[0], 222), Math.min(c[1], 244), c[2]];
+  }
+  // a place on her sheet (u across, v from far to near, both 0 to 1), on the screen: [x, y, how big things are there]
+  function galiSpot(u, v) {
+    const j = clamp(Math.round(v * (TZ - 1)), 0, TZ - 1),
+      i = clamp(Math.round(u * (TX - 1)), 0, TX - 1),
+      sc = galiDepth(v);
+    return [W / 2 + (u - 0.5) * W * lerp(0.55, 1.35, v), H * 0.36 + v * v * H * 0.62 - tyde.h[j * TX + i] * sc * 2.2, sc];
   }
 
   function galiFlowers() {
-    // sea-flowers in the sky above the water: big, luminescent, drifting like the lights in Bod-e's room
+    /* α1.3.2: the sea-flowers lie on her water (they hung in the sky above it). each one rides the swell
+       where it floats, lies flat, carries its own small light, and sends a slow ripple out. */
     x.globalCompositeOperation = 'source-over';
     if (!tyde.flowers) {
       tyde.flowers = [];
@@ -5809,28 +6294,53 @@ body.clipping #clipDot {
       for (const f of tyde.flowers) {
         f.u += f.dr * dt * (0.5 + galiStir * 0.5);
         if (f.u > 1.1) f.u = -0.1;
-        const hx = f.u * W,
-          hy = f.v * H + Math.sin(t * 0.5 + f.ph) * H * 0.015;
-        const fc = TCOLS[(f.ci + Math.floor(cshift * 0.4)) % TCOLS.length];
-        const pr = H * f.sz;
-        const glow = x.createRadialGradient(hx, hy, 0, hx, hy, pr * 2.0);
-        glow.addColorStop(0, rgba(fc, 0.045 + Ii * 0.03));
-        glow.addColorStop(1, 'rgba(0,0,0,0)');
-        x.fillStyle = glow;
+        // where it floats: the height it was given in the sky is now how far out on the water it lies
+        const fv = 0.14 + ((f.v - 0.05) / 0.26) * 0.72;
+        const sp = galiSpot(f.u, fv);
+        const hx = sp[0],
+          hy = sp[1] - 3 * sp[2];
+        const fc = ice(TCOLS[(f.ci + Math.floor(cshift * 0.4)) % TCOLS.length]);
+        const pr = H * f.sz * sp[2] * 1.25,
+          fl = AV.GALI.flat;
+        // the water under it goes dark, so it sits on her and not in her
+        x.globalCompositeOperation = 'source-over';
+        x.fillStyle = 'rgba(2,3,8,0.3)';
         x.beginPath();
-        x.arc(hx, hy, pr * 2.0, 0, Math.PI * 2);
+        x.ellipse(hx, hy, pr * 1.5, pr * 1.5 * fl, 0, 0, Math.PI * 2);
         x.fill();
-        x.strokeStyle = rgba(fc, 0.2 + Ii * 0.1);
-        x.lineWidth = 1.1;
+        // its ripple: two thin rings, breathing
+        const rip = 1 + 0.12 * Math.sin(t * 0.9 + f.ph);
+        x.lineWidth = 1;
+        x.strokeStyle = rgba(fc, 0.2);
+        x.beginPath();
+        x.ellipse(hx, hy + 2 * sp[2], pr * 2.7 * rip, pr * 2.7 * rip * fl, 0, 0, Math.PI * 2);
+        x.stroke();
+        x.strokeStyle = rgba(fc, 0.09);
+        x.beginPath();
+        x.ellipse(hx, hy + 2 * sp[2], pr * 3.9 * rip, pr * 3.9 * rip * fl, 0, 0, Math.PI * 2);
+        x.stroke();
+        // its petals, lying flat
+        x.strokeStyle = rgba(fc, 0.5 + Ii * 0.25);
+        x.lineWidth = 1.2;
         for (let k = 0; k < f.n; k++) {
           const a = (k / f.n) * Math.PI * 2 + t * f.spin;
           x.beginPath();
-          x.arc(hx + Math.cos(a) * pr * 0.95, hy + Math.sin(a) * pr * 0.95, pr * 0.75, 0, Math.PI * 2);
+          x.ellipse(hx + Math.cos(a) * pr * 0.95, hy + Math.sin(a) * pr * 0.95 * fl, pr * 0.75, pr * 0.75 * fl, 0, 0, Math.PI * 2);
           x.stroke();
         }
+        // its own small light: a tight glow and a core
+        x.globalCompositeOperation = 'lighter';
+        const glow = x.createRadialGradient(hx, hy, 0, hx, hy, pr * 1.3);
+        glow.addColorStop(0, rgba(fc, 0.05 + Ii * 0.03));
+        glow.addColorStop(1, 'rgba(0,0,0,0)');
+        x.fillStyle = glow;
         x.beginPath();
-        x.arc(hx, hy, pr * 0.45, 0, Math.PI * 2);
-        x.fillStyle = rgba(fc, 0.12);
+        x.arc(hx, hy, pr * 1.3, 0, Math.PI * 2);
+        x.fill();
+        x.globalCompositeOperation = 'source-over';
+        x.fillStyle = rgba(fc, 0.9);
+        x.beginPath();
+        x.arc(hx, hy, Math.max(1.5, pr * 0.12), 0, Math.PI * 2);
         x.fill();
       }
     x.globalCompositeOperation = 'source-over';
@@ -6020,17 +6530,60 @@ body.clipping #clipDot {
             rw = rw * (1 + 1.7 * k);
           }
         }
-        x.strokeStyle = rgba(rc, ra);
+        /* α1.3.2: along a row the troughs fall into shadow and the crests keep their light, so the swell reads as
+           depth and not as a flat band of lines. the row is still one stroke: its brightness is a gradient
+           laid along it, read from the row's own heights at thirteen places. a calm row (under a few pixels
+           of swell) is drawn even, as before. */
+        let mid = 0,
+          top = 0;
+        for (let i = 0; i < TX; i++) {
+          const u = i / (TX - 1),
+            hh = tyde.h[j * TX + i];
+          rowX[i] = W / 2 + (u - 0.5) * W * spread;
+          rowY[i] = y0 - hh * sc * 2.2;
+          mid += hh;
+        }
+        mid /= TX;
+        for (let i = 0; i < TX; i++) top = Math.max(top, Math.abs(tyde.h[j * TX + i] - mid));
+        const relief = clamp((top * sc * 2.2) / 6, 0, 1);
+        if (relief > 0.05) {
+          const shade = x.createLinearGradient(rowX[0], 0, rowX[TX - 1], 0);
+          for (let k = 0; k <= 12; k++) {
+            const i = Math.round((k * (TX - 1)) / 12),
+              hn = (tyde.h[j * TX + i] - mid) / top; // 1 on the highest crest of this row, -1 in its deepest trough. only the troughs change: they go dark
+            shade.addColorStop(k / 12, rgba(rc, clamp(ra * (1 + relief * 0.55 * Math.min(0, hn)), 0, 1)));
+          }
+          x.strokeStyle = shade;
+        } else x.strokeStyle = rgba(rc, ra);
         x.lineWidth = rw;
         x.beginPath();
         for (let i = 0; i < TX; i++) {
-          const u = i / (TX - 1);
-          const sx = W / 2 + (u - 0.5) * W * spread;
-          const sy = y0 - tyde.h[j * TX + i] * sc * 2.2;
-          if (i === 0) x.moveTo(sx, sy);
-          else x.lineTo(sx, sy);
+          if (i === 0) x.moveTo(rowX[i], rowY[i]);
+          else x.lineTo(rowX[i], rowY[i]);
         }
         x.stroke();
+        // each lamp's path of light down the water: the stretch of this row under the lamp, flickering row by row
+        if (tyde.lamps.length && v > 0.12) {
+          const pm = x.globalCompositeOperation;
+          x.globalCompositeOperation = 'lighter';
+          const wdt = W * lerp(AV.GALI.path[0], AV.GALI.path[1], v);
+          for (const L of tyde.lamps) {
+            const glint = Math.sin(j * 2.3 + t * 1.4 + L.i * 2);
+            x.strokeStyle = rgba(L.c, (0.015 + 0.16 * glint * glint) * (0.15 + 0.85 * v));
+            x.lineWidth = rw * 1.5;
+            x.beginPath();
+            let pen = false;
+            for (let i = 1; i < TX; i++) {
+              if (Math.abs((rowX[i - 1] + rowX[i]) / 2 - L.x) < wdt) {
+                if (!pen) x.moveTo(rowX[i - 1], rowY[i - 1]);
+                x.lineTo(rowX[i], rowY[i]);
+                pen = true;
+              } else pen = false;
+            }
+            x.stroke();
+          }
+          x.globalCompositeOperation = pm;
+        }
       }
   }
 
@@ -6190,6 +6743,30 @@ body.clipping #clipDot {
     t += dt * speed;
   }
 
+  /* α1.3.2: a faint grain over the clip's copy of the stage (never over the stage itself). a new patch of
+     the same grain tile every frame, so it reads as film grain and the encoder does not turn dark areas into blocks. */
+  let grainTile = null;
+  function clipGrain() {
+    if (!grainTile) {
+      grainTile = document.createElement('canvas');
+      grainTile.width = grainTile.height = 256;
+      const gx = grainTile.getContext('2d'),
+        im = gx.createImageData(256, 256);
+      for (let i = 0; i < im.data.length; i += 4) {
+        const v = Math.floor(Math.random() * 256);
+        im.data[i] = im.data[i + 1] = im.data[i + 2] = v;
+        im.data[i + 3] = 255;
+      }
+      gx.putImageData(im, 0, 0);
+    }
+    const ox = Math.floor(Math.random() * 256),
+      oy = Math.floor(Math.random() * 256);
+    clipCx.globalAlpha = AV.CLIP.grain;
+    for (let gy = -oy; gy < clipCv.height; gy += 256)
+      for (let gx2 = -ox; gx2 < clipCv.width; gx2 += 256) clipCx.drawImage(grainTile, gx2, gy);
+    clipCx.globalAlpha = 1;
+  }
+
   /* after every embodiment has drawn: Pelvy, then the immersion dark, then the idle meter */
   function postFrame(dt, Ii, listening) {
     pelvyFrame(dt, Ii);
@@ -6199,6 +6776,7 @@ body.clipping #clipDot {
       clipCx.drawImage(c, 0, 0);
       clipCx.globalCompositeOperation = 'lighter';
       clipCx.drawImage(ec, 0, 0, clipCv.width, clipCv.height);
+      clipGrain();
     }
     if (!listening) {
       for (let i = 0; i < 4; i++) {
@@ -6257,6 +6835,7 @@ body.clipping #clipDot {
       if (tabbing) tabOff();
       micSrc = actx.createMediaStreamSource(micStream);
       micSrc.connect(analyser);
+      arcReset(false);
       mic = true;
       micBtn.textContent = 'Mic on';
       micBtn.classList.add('live');
@@ -6310,6 +6889,7 @@ body.clipping #clipDot {
       if (track) trackOff(true);
       tabSrc = actx.createMediaStreamSource(tabStream);
       tabSrc.connect(analyser);
+      arcReset(false);
       tabbing = true;
       tabBtn.textContent = 'Tab on';
       tabBtn.classList.add('live');
@@ -6388,6 +6968,7 @@ body.clipping #clipDot {
     if (/^https?:/i.test(src)) audio.crossOrigin = 'anonymous';
     else audio.removeAttribute('crossorigin');
     lastErr = '';
+    arcReset(true);
     audio.src = src;
     nowEl.innerHTML = '<b>Loaded:</b> ' + name;
     track = true;
@@ -6398,7 +6979,9 @@ body.clipping #clipDot {
       showMeter(true);
     } catch (e) {
       lastErr = e.name + ': ' + e.message;
-      say('Loaded but playback was refused: ' + e.name + '. Press Play.', 4000);
+      /* α1.3.1 fix (9 Oct 2026): a link that is not a song is refused too, and this line used to land on top
+         of "Could not play that link...". when the song itself failed, that line is the one that stays. */
+      if (!audio.error) say('Loaded but playback was refused: ' + e.name + '. Press Play.', 4000);
     }
     renderQueue();
   }
@@ -6483,7 +7066,10 @@ body.clipping #clipDot {
         6000,
       );
       track = false;
-      playBtn.textContent = 'Play';
+      /* α1.3.1 fix (9 Oct 2026): nothing is loaded, so nothing says "Loaded"; and Play keeps its drawn icon */
+      playBtn.innerHTML = icon('play') + ' Play';
+      nowEl.textContent = 'Nothing loaded';
+      nowName('Nothing playing');
     }
   });
   audio.addEventListener('timeupdate', () => {
@@ -7281,6 +7867,7 @@ body.clipping #clipDot {
       clipRec.stop();
       return;
     }
+    /* α1.3.1b (15 Nov 2026): a frozen stage draws nothing, so a clip of it would save an empty file */
     if (paused) {
       say('The stage is frozen, so a clip would come out empty. Unfreeze first.', 3000);
       return;
@@ -7296,8 +7883,8 @@ body.clipping #clipDot {
     clipCx = clipCv.getContext('2d');
     const vs = clipCv.captureStream(30);
     const tracks = [...vs.getVideoTracks()];
-    /* α1.3.1a: with Tab on, the tab's own sound goes into the clip (a recorder keeps one sound track,
-       so it is the tab's or the song's, never both). a Mic clip stays silent, as ruled. */
+    /* α1.3.1b (15 Nov 2026): with Tab on, the tab's own sound goes into the clip (his 9 Oct "Go"; a recorder
+       keeps one sound track, so it is the tab's or the song's, never both). a Mic clip stays silent, as ruled. */
     if (tabbing && tabStream && tabStream.getAudioTracks().length) {
       tracks.push(tabStream.getAudioTracks()[0].clone());
     } else if (actx && gain && !mic) {
@@ -7309,8 +7896,12 @@ body.clipping #clipDot {
         tracks.push(...clipDest.stream.getAudioTracks());
       } catch (e) {}
     }
+    /* α1.3.2: MP4 with AAC sound is asked for first, by its full name (the short 'avc1,mp4a' is accepted by
+       no Chrome, so every clip fell through to MP4 with Opus sound, which many players and phones play mute). */
     const types = [
-      'video/mp4;codecs=avc1,mp4a',
+      'video/mp4;codecs="avc1.42E01E,mp4a.40.2"',
+      'video/mp4;codecs="avc1.640028,mp4a.40.2"',
+      'video/mp4;codecs=avc1,opus',
       'video/mp4;codecs=avc1',
       'video/webm;codecs=vp9,opus',
       'video/webm;codecs=vp8,opus',
@@ -7321,7 +7912,7 @@ body.clipping #clipDot {
     try {
       clipRec = new MediaRecorder(
         new MediaStream(tracks),
-        ty ? { mimeType: ty, videoBitsPerSecond: 8e6 } : {},
+        ty ? { mimeType: ty, videoBitsPerSecond: AV.CLIP.bits, audioBitsPerSecond: 192000 } : {},
       );
     } catch (e) {
       say('Could not start the clip: ' + e.message, 3000);
@@ -7331,6 +7922,9 @@ body.clipping #clipDot {
     clipRec.ondataavailable = (ev) => {
       if (ev.data && ev.data.size) clipChunks.push(ev.data);
     };
+    /* α1.3.1 fix (8 Oct 2026): when clipToggle was split for the code check, the start of the recording
+       ended up inside onstop, so no clip ever started. onstop is set first, the recording starts after it,
+       as in α1.3. */
     clipRec.onstop = () => clipSaved(ty);
     clipRec.start(500);
     document.body.classList.add('clipping');
@@ -7344,13 +7938,12 @@ body.clipping #clipDot {
     closeSheets();
   }
 
-  // α1.3.1a: the Clip button runs the same thing as the C key
-  document.getElementById('clipBtn').addEventListener('click', clipToggle);
-
   // the clip has stopped: saves the video file and puts the button back
   function clipSaved(ty) {
-    const blob = new Blob(clipChunks, { type: ty || 'video/webm' });
-    const ext = /mp4/.test(ty) ? 'mp4' : 'webm';
+    /* α1.3.1 fix (8 Oct 2026): tp went missing in the split; it is the type the recorder really used */
+    const tp = clipRec.mimeType || ty || 'video/webm';
+    const blob = new Blob(clipChunks, { type: tp });
+    const ext = /mp4/.test(tp) ? 'mp4' : 'webm';
     const nm = (queue[qi] ? queue[qi].name.replace(/\.[^.]+$/, '') : 'ayvee')
       .replace(/[^\w.-]+/g, '_')
       .slice(0, 40);
@@ -7369,8 +7962,18 @@ body.clipping #clipDot {
     document.body.classList.remove('clipping');
     document.getElementById('clipBtn').classList.remove('live');
     document.getElementById('clipBtn').textContent = 'Clip';
-    say('Clip saved.', 1800);
+    // say plainly what the browser really made
+    const kind = !/mp4/.test(tp)
+      ? 'WebM'
+      : /mp4a/.test(tp)
+        ? 'MP4, AAC sound'
+        : /opus/.test(tp)
+          ? 'MP4, Opus sound (some players play it mute)'
+          : 'MP4';
+    say('Clip saved: ' + kind + '.', 3200);
   }
+  /* α1.3.1 fix (8 Oct 2026): the Clip button had nothing listening to it; only the C key started a clip */
+  document.getElementById('clipBtn').addEventListener('click', clipToggle);
 
   /* ======================================================================
      17 · TELL NATE
@@ -7455,7 +8058,7 @@ body.clipping #clipDot {
       sel: '#track',
       desk: true,
       h: 'Your songs',
-      t: 'Pick one song or a whole folder, or drop them on the window. They queue and play through. Sensitivity decides how quiet a layer can be and still count.',
+      t: 'Pick one song or a whole folder, or drop them on the window. They queue and play through.',
     },
     {
       sel: '#trackBtn',
@@ -7482,13 +8085,13 @@ body.clipping #clipDot {
       sel: '#mode',
       desk: true,
       h: 'The mood',
-      t: 'Auto lets the sound decide. Tap it to hold Verse or Chorus. Mic listens to the room; Tab reads another browser tab.',
+      t: 'Auto lets the sound decide. Tap it to hold Verse or Chorus. Sensitivity, beside it, decides how quiet a layer can be and still count. Mic listens to the room; Tab reads another browser tab.',
     },
     {
       sel: '#moreBtn',
       desk: false,
       h: 'More',
-      t: 'Mic, the mood, freeze, layers, the Lab, a video clip of the stage, immerse, hide, and Tell Nate.',
+      t: 'Mic, the mood, Sensitivity, freeze, layers, the Lab, a video clip of the stage, immerse, hide, and Tell Nate.',
     },
     {
       sel: '#layersBtn',
