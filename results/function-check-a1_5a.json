@@ -1,0 +1,1488 @@
+{
+ "totals": {
+  "build": "a1_5a",
+  "lines": 119,
+  "runs": 164,
+  "pass": 148,
+  "hands": 13,
+  "fail": 3
+ },
+ "results": [
+  {
+   "id": "first.card",
+   "where": "pc",
+   "group": "The first visit",
+   "status": "PASS",
+   "got": "the card shows; C does nothing behind the card; Just start puts it away; the browser remembers; it stays away after a reload",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "first.card",
+   "where": "phone",
+   "group": "The first visit",
+   "status": "PASS",
+   "got": "the card shows; C does nothing behind the card; Just start puts it away; the browser remembers; it stays away after a reload",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "first.tour",
+   "where": "pc",
+   "group": "The first visit",
+   "status": "PASS",
+   "got": "the card is gone; the tour is on its first step [1 of 11The embodimentsEach one hears the same song differently. Pick one. The dark sockets are still asleep.nextskip]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "first.tour",
+   "where": "phone",
+   "group": "The first visit",
+   "status": "PASS",
+   "got": "the card is gone; the tour is on its first step [1 of 8The embodimentsEach one hears the same song differently. Pick one. The dark sockets are still asleep.nextskip]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "emb.bode",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Bod-e. Hold the shape.]; only that button is lit [bode]; the title follows [α1.5a · BOD-E]; Layers follows; the guide follows; the guide shows only that part [#legBode]; the picture is not Gali [46.7 apart]; the picture is not Hingez [13.8 apart]; the picture is not Wren [14.3 apart]",
+   "hands": "",
+   "seconds": 54
+  },
+  {
+   "id": "emb.bode",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Bod-e. Hold the shape.]; only that button is lit [bode]; the title follows [α1.5a · BOD-E]; Layers follows; the guide follows; the guide shows only that part [#legBode]",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "emb.tyde",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Gali. Get in, it's fine.]; only that button is lit [tyde]; the title follows [α1.5a · GALI]; Layers follows; the guide follows; the guide shows only that part [#legTyde]; the picture is not Bod-e [46.7 apart]; the picture is not Hingez [46.4 apart]; the picture is not Wren [48.4 apart]",
+   "hands": "",
+   "seconds": 51
+  },
+  {
+   "id": "emb.tyde",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Gali. Get in, it's fine.]; only that button is lit [tyde]; the title follows [α1.5a · GALI]; Layers follows; the guide follows; the guide shows only that part [#legTyde]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.hinge",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Hingez. Just about holding it together.]; only that button is lit [hinge]; the title follows [α1.5a · HINGEZ]; Layers follows; the guide follows; the guide shows only that part [#legHinge]; the picture is not Bod-e [13.8 apart]; the picture is not Gali [46.4 apart]; the picture is not Wren [7.5 apart]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.hinge",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Hingez. Just about holding it together.]; only that button is lit [hinge]; the title follows [α1.5a · HINGEZ]; Layers follows; the guide follows; the guide shows only that part [#legHinge]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.cyn",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Wren. Try and keep up.]; only that button is lit [cyn]; the title follows [α1.5a · WREN]; Layers follows; the guide follows; the guide shows only that part [#legCyn]; the picture is not Bod-e [14.3 apart]; the picture is not Gali [48.4 apart]; the picture is not Hingez [7.5 apart]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.cyn",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble greets [Wren. Try and keep up.]; only that button is lit [cyn]; the title follows [α1.5a · WREN]; Layers follows; the guide follows; the guide shows only that part [#legCyn]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.asleep.infility",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble says so [In-Fil-Ity is still asleep. Soon.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.asleep.infility",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble says so [In-Fil-Ity is still asleep. Soon.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.asleep.kora",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble says so [Juno is still asleep. Soon.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.asleep.kora",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble says so [Juno is still asleep. Soon.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.asleep.zeph",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble says so [Zeph is still asleep. Soon.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.asleep.zeph",
+   "where": "phone",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble says so [Zeph is still asleep. Soon.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "emb.duringFocus",
+   "where": "pc",
+   "group": "The embodiments",
+   "status": "PASS",
+   "got": "the bubble asks to wait [Let the Focused Frequency finish first.]; Bod-e stays",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "songs.pick",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "Pick songs can be reached; the song is playing [0.38 s of 12 s]; its name is in the panel [Loaded: test one.wav]; the queue marks it [1. test one.wav]; Play says Pause; the name is in the bar and in More; the bass bar of the meter rises [up to 86%]; the meter reads LIVE [LIVE]",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "songs.pick",
+   "where": "phone",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "Pick songs can be reached; the song is playing [0.52 s of 12 s]; its name is in the panel [Loaded: test one.wav]; the queue marks it [1. test one.wav]; Play says Pause; the name is in the bar and in More; the bass bar of the meter rises [up to 86%]; the meter reads LIVE [LIVE]",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "songs.pickMany",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "three in the queue [1. test one.wav2. test two.wav3. test three.wav]; the bubble counts the new one [1 added to queue.]; Next reaches the fourth [short a.wav]",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "songs.drop",
+   "where": "pc",
+   "group": "The songs",
+   "status": "NEEDS HIS HANDS",
+   "got": "the drop frame shows; it goes when the drag leaves; a text file is left alone [Queue empty]; the dropped songs queue and play [1. test one.wav2. test two.wav]; one more dropped is counted [1 added to the queue.]",
+   "hands": "a real drag from a folder on his computer (the test hands the window the same event with the same files)",
+   "seconds": 2
+  },
+  {
+   "id": "songs.link",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "Link opens the box; an empty box does nothing; the linked song plays [0.58 s]; the meter hears it [bass up to 82%]; a dead link says so [the bubble reads: Could not play that link. Streaming and share links do not work - it needs a direct audio file, or use Pick an audio file. / the panel reads: Nothing loaded]; Play is Play again, with its icon [Play]; nothing says Loaded [Nothing loaded / Nothing playing]; a good link after a dead one plays [Loaded: test%20one.mp3]",
+   "hands": "",
+   "seconds": 7
+  },
+  {
+   "id": "songs.seek",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the song is at about 9 s [9.49 s]; the head of the crescent follows [2.6 px off]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "songs.seek",
+   "where": "phone",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the song is at about 9 s [9.49 s]; the head of the crescent follows [3.3 px off]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "songs.seekBar",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the song is at about 6 s [6.41 s]; the small fill follows [51%]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "songs.sensitivity",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "it can be reached, by Auto; the number follows [1.7]; the fill follows; the build is using 1.7 [sensitivity 1.7]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "songs.sensitivity",
+   "where": "phone",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "it can be reached, by Auto; the number follows [1.7]; the fill follows; the build is using 1.7 [sensitivity 1.7]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "help.sens",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the card shows; it explains [Every layer (bass, synths, voice, highs) is read a]; Got it closes it",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "help.sens",
+   "where": "phone",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the card shows; it explains [Every layer (bass, synths, voice, highs) is read a]; Got it closes it",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "help.lab",
+   "where": "pc",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "the card shows; it explains [The Lab is for measuring, not for watching. Record]; Got it closes it",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "help.lab",
+   "where": "phone",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "the card shows; it explains [The Lab is for measuring, not for watching. Record]; Got it closes it",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "songs.clear",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the player is stopped and empty [no song]; the queue is empty; nothing is named; Play is Play; the bubble says so [Track unloaded.]",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "songs.clear",
+   "where": "phone",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "the player is stopped and empty [no song]; the queue is empty; nothing is named; Play is Play; the bubble says so [Track unloaded.]",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "play.button",
+   "where": "pc",
+   "group": "The player",
+   "status": "PASS",
+   "got": "with no songs it says so [Add some songs first.]; it pauses [stood at 1.00 s]; the button says Play, the meter PAUSED [PAUSED]; it plays again [1.77 s]; the button says Pause",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "play.button",
+   "where": "phone",
+   "group": "The player",
+   "status": "PASS",
+   "got": "with no songs it says so [Add some songs first.]; and opens Songs; it pauses [stood at 0.54 s]; the button says Play, the meter PAUSED [PAUSED]; it plays again [1.31 s]; the button says Pause",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "play.space",
+   "where": "pc",
+   "group": "The player",
+   "status": "PASS",
+   "got": "Space pauses; Space plays",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "play.next",
+   "where": "pc",
+   "group": "The player",
+   "status": "PASS",
+   "got": "Next plays test two.wav [test two.wav]; Next plays test three.wav [test three.wav]; Next plays test one.wav [test one.wav]",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "play.next",
+   "where": "phone",
+   "group": "The player",
+   "status": "PASS",
+   "got": "Next plays test two.wav [test two.wav]; Next plays test three.wav [test three.wav]; Next plays test one.wav [test one.wav]",
+   "hands": "",
+   "seconds": 6
+  },
+  {
+   "id": "play.previous",
+   "where": "pc",
+   "group": "The player",
+   "status": "PASS",
+   "got": "early: the song before [test three.wav]; later: this song from its start [0.42 s]",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "play.previous",
+   "where": "phone",
+   "group": "The player",
+   "status": "PASS",
+   "got": "early: the song before [test three.wav]; later: this song from its start [0.48 s]",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "play.repeat",
+   "where": "pc",
+   "group": "The player",
+   "status": "PASS",
+   "got": "it steps off, all, one, off [off all* one* off]; off: plays through and stops [short b.wav, stopped]; a finished song earns 8 Echoes [16/100]; all: back on the first [short a.wav, playing]; one: still the first, started over [short a.wav at 1.69 s]",
+   "hands": "",
+   "seconds": 32
+  },
+  {
+   "id": "play.volume",
+   "where": "pc",
+   "group": "The player",
+   "status": "PASS",
+   "got": "the real volume is 0.6 [0.6000000238418579]; the labels follow; all the way down is silent [0]; a volume set before the first song holds [0.30000001192092896]",
+   "hands": "",
+   "seconds": 6
+  },
+  {
+   "id": "play.volumePhone",
+   "where": "phone",
+   "group": "The player",
+   "status": "PASS",
+   "got": "the slider can be reached; the real volume is 0.25 [0.25]; the label follows [25%]",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "play.repeatPhone",
+   "where": "phone",
+   "group": "The player",
+   "status": "PASS",
+   "got": "it steps all, one, off [all/all* one/one* off/repeat off]",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "pelvy.staying",
+   "where": "pc",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "listening earns [2/100]; silence earns nothing [1/100]",
+   "hands": "",
+   "seconds": 106
+  },
+  {
+   "id": "pelvy.stacks",
+   "where": "pc",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "Focus sleeps with no stack; a pip lights; the level goes up [Lv 2]; Focus wakes; the bubble counts [Pelvy holds 1 stack. Press F when the chorus hits.]; kept after a reload; the third says he is full [Pelvy is full and can't sit still. F gives one, S gives it all.]; he can't sit still; a fourth does not fit [Pelvy cannot hold more than three. Let him give it back: F.]",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "pelvy.stacks",
+   "where": "phone",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "Focus sleeps with no stack; a pip lights; the level goes up [Lv 2]; Focus wakes; the bubble counts [Pelvy holds 1 stack. Press F when the chorus hits.]; kept after a reload; the third says he is full [Pelvy is full and can't sit still. F gives one, S gives it all.]; he can't sit still; a fourth does not fit [Pelvy cannot hold more than three. Let him give it back: F.]",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "pelvy.pips",
+   "where": "pc",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "numbers off: nothing; the second pip lights two [Pelvy holds 2.]; the third lights three; not saved",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "pelvy.pips",
+   "where": "phone",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "numbers off: nothing; the second pip lights two [Pelvy holds 2.]; the third lights three; not saved",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "pelvy.god",
+   "where": "pc",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "he starts full; a Focus fires [Pelvy lets go. Bod-e blooms.]; and spends nothing",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "focus.tap",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy lets go. Bod-e blooms.]; Pelvy gave 1 [0 left of 1]; it lasts 20 s [20.13 s]; the picture is not the one without Focus [25.1 apart]; the button rests while it runs; and is ready again after, if he still holds a stack",
+   "hands": "",
+   "seconds": 133
+  },
+  {
+   "id": "focus.F",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy lets go. Bod-e blooms.]; Pelvy gave 1 [1 left of 2]; it lasts 20 s [20.13 s]; the picture is not the one without Focus [25.1 apart]; the button rests while it runs; and is ready again after, if he still holds a stack",
+   "hands": "",
+   "seconds": 106
+  },
+  {
+   "id": "focus.S2",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy gives two. The room lets go.]; Pelvy gave 2 [0 left of 2]; it lasts 26 s [26.13 s]; the picture is not the one without Focus [27.2 apart]; the button rests while it runs; and is ready again after, if he still holds a stack; two stacks is not the one-stack Focus [28.74 apart]",
+   "hands": "",
+   "seconds": 126
+  },
+  {
+   "id": "focus.S3",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy gives everything. Nothing holds her.]; Pelvy gave 3 [0 left of 3]; it lasts 34 s [34.13 s]; the picture is not the one without Focus [31.1 apart]; the button rests while it runs; and is ready again after, if he still holds a stack; three stacks is not the two-stack Focus [29.77 apart]",
+   "hands": "",
+   "seconds": 197
+  },
+  {
+   "id": "focus.hold",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "held: everything [Pelvy gives everything. Nothing holds her. / 0 left]; a tap: one [2 left]; slid off: nothing [3 left]; cancelled: nothing [3 left]",
+   "hands": "",
+   "seconds": 10
+  },
+  {
+   "id": "focus.hold",
+   "where": "phone",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "held: everything [Pelvy gives everything. Nothing holds her. / 0 left]; a tap: one [2 left]; slid off: nothing [3 left]; cancelled: nothing [3 left]",
+   "hands": "",
+   "seconds": 11
+  },
+  {
+   "id": "focus.tyde",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy lets go. Gali splits.]; Pelvy gave 1 [1 left of 2]; it lasts 20 s [20.13 s]; the picture is not the one without Focus [31.1 apart]; the button rests while it runs; and is ready again after, if he still holds a stack",
+   "hands": "",
+   "seconds": 81
+  },
+  {
+   "id": "focus.hinge",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy lets go. Hingez comes undone.]; Pelvy gave 2 [0 left of 2]; it lasts 26 s [26.13 s]; the picture is not the one without Focus [60.1 apart]; the button rests while it runs; and is ready again after, if he still holds a stack",
+   "hands": "",
+   "seconds": 104
+  },
+  {
+   "id": "focus.cyn",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "the bubble [Pelvy lets go. Wren goes up.]; Pelvy gave 2 [0 left of 2]; it lasts 26 s [26.13 s]; the picture is not the one without Focus [8.9 apart]; the button rests while it runs; and is ready again after, if he still holds a stack",
+   "hands": "",
+   "seconds": 95
+  },
+  {
+   "id": "focus.none",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "no stack: nothing; a second cannot start [1 left]; the guide counts it [1 Focused Frequencies fired]",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "focus.none",
+   "where": "phone",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "no stack: nothing; a second cannot start [1 left]; the guide counts it [1 Focused Frequencies fired]",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "thread.button",
+   "where": "pc",
+   "group": "The thread",
+   "status": "FAIL",
+   "got": "WRONG: before it, it does not",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "thread.button",
+   "where": "phone",
+   "group": "The thread",
+   "status": "PASS",
+   "got": "nothing playing: play a song first [Play a song first, then hold Thread while your element plays.]; too short: hold longer [Hold it a little longer, for as long as your element plays.]; held: it reads Listening, in red [{\"live\":true,\"says\":\"Listening\"}]; the bubble names the song and the stretch [Got your thread in test one, 0:03 to 0:05. Every time it plays, they will feel it.]; it is kept, with its stretch [[3.34,5.14]]; the dot shows; at the stretch it plays [thread 0.95]; before it, it does not",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "thread.key",
+   "where": "pc",
+   "group": "The thread",
+   "status": "PASS",
+   "got": "nothing playing: play a song first [Play a song first, then hold Thread while your element plays.]; too short: hold longer [Hold it a little longer, for as long as your element plays.]; the bubble names the song and the stretch [Got your thread in test one, 0:02 to 0:03. Every time it plays, they will feel it.]; it is kept, with its stretch [[2.29,3.94]]; the dot shows; at the stretch it plays [thread 0.93]; before it, it does not",
+   "hands": "",
+   "seconds": 7
+  },
+  {
+   "id": "hingez.wip",
+   "where": "pc",
+   "group": "The thread",
+   "status": "PASS",
+   "got": "the tag is on his card; the note shows [Hingez is still being made. He will change, and some of him isn't there yet.]; in the window; picking Wren hides it",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "hingez.wip",
+   "where": "phone",
+   "group": "The thread",
+   "status": "PASS",
+   "got": "the tag is on his card; the note shows [Hingez is still being made. He will change, and some of him isn't there yet.]; in the window; picking Wren hides it",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "tools.mic",
+   "where": "pc",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "NEEDS HIS HANDS",
+   "got": "the button lights [Mic on]; the meter reads MIC [MIC]; the song is put away; pressed again it stops [Mic off / IDLE]",
+   "hands": "a real microphone, the browser asking him for it, and what the room does to the picture",
+   "seconds": 5
+  },
+  {
+   "id": "tools.mic",
+   "where": "phone",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "NEEDS HIS HANDS",
+   "got": "the button lights [Mic on]; the meter reads MIC [MIC]; the song is put away; pressed again it stops [Mic off / IDLE]",
+   "hands": "a real microphone, the browser asking him for it, and what the room does to the picture",
+   "seconds": 3
+  },
+  {
+   "id": "tools.tab",
+   "where": "pc",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "NEEDS HIS HANDS",
+   "got": "the button is there; a press gets an answer [Reading that tab. Load a playlist and leave it running - it never stops.]",
+   "hands": "picking a real tab with \"Also share tab audio\", the picture following that tab, and the tab ending",
+   "seconds": 1
+  },
+  {
+   "id": "tools.tab",
+   "where": "phone",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "NEEDS HIS HANDS",
+   "got": "not offered on the phone",
+   "hands": "picking a real tab with \"Also share tab audio\", the picture following that tab, and the tab ending",
+   "seconds": 2
+  },
+  {
+   "id": "tools.mood",
+   "where": "pc",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "PASS",
+   "got": "it steps [Verse: Verse: held low. | Chorus: Chorus: held high. | Auto: Auto: the sound decides.]; Auto is lit; Chorus is not Verse on the stage [9.7 apart]",
+   "hands": "",
+   "seconds": 54
+  },
+  {
+   "id": "tools.mood",
+   "where": "phone",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "PASS",
+   "got": "it steps [Verse: Verse: held low. | Chorus: Chorus: held high. | Auto: Auto: the sound decides.]; Auto is lit",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "tools.autoArc",
+   "where": "pc",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "PASS",
+   "got": "the quiet part draws a quieter picture than the first loud part [3.9 against 8.5]; she comes back up for the second loud part [7.8 against 3.9]",
+   "hands": "",
+   "seconds": 37
+  },
+  {
+   "id": "tools.freeze",
+   "where": "pc",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "PASS",
+   "got": "the button says Unfreeze; frozen: the picture stands still [0.000 apart]; frozen: a tap earns nothing [0/100]; unfrozen: it moves [4.00 apart]",
+   "hands": "",
+   "seconds": 13
+  },
+  {
+   "id": "tools.freeze",
+   "where": "phone",
+   "group": "Mic, tab, the mood, freeze",
+   "status": "PASS",
+   "got": "the button says Unfreeze",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "layers.panel",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "it opens; Bod-e: 8 rows, all lit [8/8 lit]; Close closes; D opens; D again closes; tyde: Close can be reached; hinge: Close can be reached; cyn: Close can be reached; bode: Close can be reached; each embodiment has its own [7,5,6,8]; every row of every embodiment can be pressed [all 26]; the Lab takes its place; and gives it back",
+   "hands": "",
+   "seconds": 54
+  },
+  {
+   "id": "layers.panel",
+   "where": "phone",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "it opens; Bod-e: 8 rows, all lit [8/8 lit]; Close closes; D opens; D again closes; tyde: Close can be reached; hinge: Close can be reached; cyn: Close can be reached; bode: Close can be reached; each embodiment has its own [7,5,6,8]; every row of every embodiment can be pressed [all 26]",
+   "hands": "",
+   "seconds": 49
+  },
+  {
+   "id": "layer.bode.swirl",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [7.28 apart]",
+   "hands": "",
+   "seconds": 41
+  },
+  {
+   "id": "layer.bode.edge",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [1.90 apart]",
+   "hands": "",
+   "seconds": 36
+  },
+  {
+   "id": "layer.bode.bursts",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [1.23 apart]",
+   "hands": "",
+   "seconds": 26
+  },
+  {
+   "id": "layer.bode.grit",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [4.57 apart]",
+   "hands": "",
+   "seconds": 26
+  },
+  {
+   "id": "layer.bode.lights",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [3.28 apart]",
+   "hands": "",
+   "seconds": 25
+  },
+  {
+   "id": "layer.bode.lamp",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [0.11 apart]",
+   "hands": "",
+   "seconds": 26
+  },
+  {
+   "id": "layer.bode.floor",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [0.52 apart]",
+   "hands": "",
+   "seconds": 28
+  },
+  {
+   "id": "layer.bode.pelvy",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [7/8 lit]; that part of the picture is gone [5.08 apart]",
+   "hands": "",
+   "seconds": 26
+  },
+  {
+   "id": "layer.bode.back",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "all dark [0/8 lit]; all lit again [8/8 lit]; the picture is whole again [0.000 apart]",
+   "hands": "",
+   "seconds": 28
+  },
+  {
+   "id": "layer.tyde.gwater",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [6/7 lit]; that part of the picture is gone [13.25 apart]",
+   "hands": "",
+   "seconds": 35
+  },
+  {
+   "id": "layer.tyde.gfish",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [6/7 lit]; that part of the picture is gone [18.49 apart]",
+   "hands": "",
+   "seconds": 19
+  },
+  {
+   "id": "layer.tyde.gfoam",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [6/7 lit]; that part of the picture is gone [20.10 apart]",
+   "hands": "",
+   "seconds": 19
+  },
+  {
+   "id": "layer.tyde.glints",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [6/7 lit]; that part of the picture is gone [17.79 apart]",
+   "hands": "",
+   "seconds": 19
+  },
+  {
+   "id": "layer.tyde.gflowers",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [6/7 lit]; that part of the picture is gone [2.08 apart]",
+   "hands": "",
+   "seconds": 19
+  },
+  {
+   "id": "layer.tyde.glights",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [6/7 lit]; that part of the picture is gone [19.17 apart]",
+   "hands": "",
+   "seconds": 18
+  },
+  {
+   "id": "layer.tyde.back",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "all dark [0/7 lit]; all lit again [7/7 lit]; the picture is whole again [0.000 apart]",
+   "hands": "",
+   "seconds": 21
+  },
+  {
+   "id": "layer.hinge.hstrings",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [4/5 lit]; that part of the picture is gone [2.69 apart]",
+   "hands": "",
+   "seconds": 29
+  },
+  {
+   "id": "layer.hinge.hlight",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [4/5 lit]; that part of the picture is gone [1.60 apart]",
+   "hands": "",
+   "seconds": 20
+  },
+  {
+   "id": "layer.hinge.hveins",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [4/5 lit]; that part of the picture is gone [0.08 apart]",
+   "hands": "",
+   "seconds": 16
+  },
+  {
+   "id": "layer.hinge.hmotes",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [4/5 lit]; that part of the picture is gone [1.50 apart]",
+   "hands": "",
+   "seconds": 16
+  },
+  {
+   "id": "layer.hinge.back",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "all dark [0/5 lit]; all lit again [5/5 lit]; the picture is whole again [0.000 apart]",
+   "hands": "",
+   "seconds": 17
+  },
+  {
+   "id": "layer.cyn.wtrail",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [5/6 lit]; that part of the picture is gone [0.08 apart]",
+   "hands": "",
+   "seconds": 25
+  },
+  {
+   "id": "layer.cyn.wshards",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [5/6 lit]; that part of the picture is gone [0.67 apart]",
+   "hands": "",
+   "seconds": 12
+  },
+  {
+   "id": "layer.cyn.wcoals",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [5/6 lit]; that part of the picture is gone [0.05 apart]",
+   "hands": "",
+   "seconds": 12
+  },
+  {
+   "id": "layer.cyn.wdust",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [5/6 lit]; that part of the picture is gone [0.02 apart]",
+   "hands": "",
+   "seconds": 13
+  },
+  {
+   "id": "layer.cyn.wfloor",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "the row goes dark; the count drops [5/6 lit]; that part of the picture is gone [0.10 apart]",
+   "hands": "",
+   "seconds": 13
+  },
+  {
+   "id": "layer.cyn.back",
+   "where": "pc",
+   "group": "The layers",
+   "status": "PASS",
+   "got": "all dark [0/6 lit]; all lit again [6/6 lit]; the picture is whole again [0.000 apart]",
+   "hands": "",
+   "seconds": 12
+  },
+  {
+   "id": "lab.panel",
+   "where": "pc",
+   "group": "The Lab",
+   "status": "FAIL",
+   "got": "WRONG: #recBtn can be reached; #markBtn can be reached; #numBtn can be reached",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "lab.panel",
+   "where": "phone",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "it opens; #recBtn can be reached; #markBtn can be reached; #numBtn can be reached; Close closes",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "lab.record",
+   "where": "pc",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "nothing playing: it says so [Play something first, then Record.]; Mark without Record: it says so [Record first, then Mark.]; the button says Stop rec; the bubble says it is recording [Recording what it hears. M drops a mark. Press Record again to save.]; a mark is counted [mark 1 at 1.80s]; a file is saved; it is named for the song [ayvee-hears-test_one.wav.json]; it says what made it [Ay-Vee Utopia α1.5a]; ten steps a second of the song [36 steps in 4.1 s of the song]; all four layers have every step; the bass was heard [bass up to 1]; the bass hits are in it [7 hits]; both marks are in it [1.8, 2.781]; the bubble sums it up [Saved: 36 steps, 7 bass onsets, 2 marks.]; the button is Record again",
+   "hands": "",
+   "seconds": 8
+  },
+  {
+   "id": "lab.record",
+   "where": "phone",
+   "group": "The Lab",
+   "status": "FAIL",
+   "got": "WRONG: ten steps a second of the song [39 steps in 4.4 s of the song]",
+   "hands": "",
+   "seconds": 7
+  },
+  {
+   "id": "lab.recordKeys",
+   "where": "pc",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "the button says Stop rec; the bubble says it is recording [Recording what it hears. M drops a mark. Press Record again to save.]; a mark is counted [mark 1 at 1.39s]; a file is saved; it is named for the song [ayvee-hears-test_one.wav.json]; it says what made it [Ay-Vee Utopia α1.5a]; ten steps a second of the song [26 steps in 2.8 s of the song]; all four layers have every step; the bass was heard [bass up to 1]; the bass hits are in it [4 hits]; both marks are in it [1.39, 2.241]; the bubble sums it up [Saved: 26 steps, 4 bass onsets, 2 marks.]; the button is Record again",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "lab.numbers",
+   "where": "pc",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "the button says on; it can be seen; it carries the numbers [0:03.2 bass 0.93 syn 0.49 voice 0.00 highs 0.00bass pulse 11]; the guard shows on Bod-e [guard glass flat]; it says it is recording; the time moves [0:04.2]; no guard on Gali; off hides it",
+   "hands": "",
+   "seconds": 8
+  },
+  {
+   "id": "lab.numbers",
+   "where": "phone",
+   "group": "The Lab",
+   "status": "PASS",
+   "got": "the button says on; it can be seen; it carries the numbers [0:03.5 bass 0.81 syn 0.56 voice 0.05 highs 0.00bass pulse 12]; the guard shows on Bod-e [guard glass flat]; it says it is recording; the time moves [0:04.7]; no guard on Gali; off hides it",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "lab.guard",
+   "where": "pc",
+   "group": "The Lab",
+   "status": "NEEDS HIS HANDS",
+   "got": "the guard steps down when frames run short [frame 16 fps · guard glass flat, tails shorter]",
+   "hands": "on his card: that it reads \"full\" on Telo, and that it steps back up after a drop",
+   "seconds": 5
+  },
+  {
+   "id": "clip.button",
+   "where": "pc",
+   "group": "Clip",
+   "status": "PASS",
+   "got": "the red clip plate shows; the button says Stop clip [Stop clip]; the bubble says it is recording [Recording the stage (up to a minute). C or Stop clip to finish.]; a file is saved; the bubble says Clip saved and what it is [Clip saved: MP4, Opus sound (some players play it mute), 1920×1080.]; what it says is what the file is [Clip saved: MP4, Opus sound (some players play it mute), 1920×1080. / 1795470221159-ayvee-bode-test_one.mp4]; it is 1920×1080 [h264 1920x1080]; it is a video that plays [h264 1920x1080, 33 frames, 4.2 s, 2045 KB]; it is as long as it recorded [4.2 s saved, 4.4 s recorded]; the stage is in it (not a black frame) [brightness 7.27604]; the button is Clip again; the song is in it [opus, peak -8.1 dB]; named for the embodiment and the song [ayvee-bode-test_one.mp4]",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "clip.key",
+   "where": "pc",
+   "group": "Clip",
+   "status": "PASS",
+   "got": "the red clip plate shows; the button says Stop clip [Stop clip]; the bubble says it is recording [Recording the stage (up to a minute). C or Stop clip to finish.]; a file is saved; the bubble says Clip saved and what it is [Clip saved: MP4, Opus sound (some players play it mute), 1920×1080.]; what it says is what the file is [Clip saved: MP4, Opus sound (some players play it mute), 1920×1080. / 1795470223709-ayvee-bode-test_one.mp4]; it is 1920×1080 [h264 1920x1080]; it is a video that plays [h264 1920x1080, 27 frames, 4.6 s, 1667 KB]; it is as long as it recorded [4.6 s saved, 4.3 s recorded]; the stage is in it (not a black frame) [brightness 8.5191]; the button is Clip again; the song is in it [opus, peak -9 dB]",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "clip.fromFile",
+   "where": "pc",
+   "group": "Clip",
+   "status": "NEEDS HIS HANDS",
+   "got": "the red clip plate shows; the button says Stop clip [Stop clip]; the bubble says it is recording [Recording the stage (up to a minute). C or Stop clip to finish.]; a file is saved; the bubble says Clip saved and what it is [Clip saved: MP4, Opus sound (some players play it mute), 1920×1080.]; what it says is what the file is [Clip saved: MP4, Opus sound (some players play it mute), 1920×1080. / 1795470234946-ayvee-bode-test_one.mp4]; it is 1920×1080 [h264 1920x1080]; it is a video that plays [h264 1920x1080, 45 frames, 7.13 s, 2903 KB]; it is as long as it recorded [7.13 s saved, 6.6 s recorded]; the stage is in it (not a black frame) [brightness 6.14757]; the button is Clip again; the song is in it [opus]",
+   "hands": "the file landing in his Downloads folder, and that it plays in his player",
+   "seconds": 14
+  },
+  {
+   "id": "clip.noSong",
+   "where": "pc",
+   "group": "Clip",
+   "status": "PASS",
+   "got": "the red clip plate shows; the button says Stop clip [Stop clip]; the bubble says it is recording [Recording the stage (up to a minute). C or Stop clip to finish.]; a file is saved; the bubble says Clip saved and what it is [Clip saved: MP4, no sound, 1920×1080.]; what it says is what the file is [Clip saved: MP4, no sound, 1920×1080. / 1795470232195-ayvee-tyde-ayvee.mp4]; it is 1920×1080 [h264 1920x1080]; it is a video that plays [h264 1920x1080, 37 frames, 4.4 s, 2245 KB]; it is as long as it recorded [4.4 s saved, 4.3 s recorded]; the stage is in it (not a black frame) [brightness 22.9618]; the button is Clip again; named for Gali [ayvee-tyde-ayvee.mp4]",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "clip.minute",
+   "where": "pc",
+   "group": "Clip",
+   "status": "NEEDS HIS HANDS",
+   "got": "it is recording; still recording a few seconds before the minute; it stopped and saved by itself [ayvee-bode-ayvee.mp4]; the video plays",
+   "hands": "a real full minute: that the file holds all sixty seconds",
+   "seconds": 5
+  },
+  {
+   "id": "clip.phone",
+   "where": "phone",
+   "group": "Clip",
+   "status": "PASS",
+   "got": "no Clip on the phone [none]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "hud.immerse",
+   "where": "pc",
+   "group": "Immerse and Hide",
+   "status": "NEEDS HIS HANDS",
+   "got": "it is immersed; the bubble says so [Immersed. (Screen lock needs a secure page - the PC may still sleep.) Esc or I to come back.]; every pane is gone [none left]; the tab stays; I brings it back; from I, the tab brings the HUD back; the edges darken [8.6 to 4.0]",
+   "hands": "the window going fullscreen, the screen staying awake, Esc out of fullscreen bringing the HUD back, and coming back to the tab keeping the screen awake",
+   "seconds": 44
+  },
+  {
+   "id": "hud.immerse",
+   "where": "phone",
+   "group": "Immerse and Hide",
+   "status": "NEEDS HIS HANDS",
+   "got": "it is immersed; the bubble says so [Immersed. (Screen lock needs a secure page - the PC may still sleep.) Esc or I to come back.]; every pane is gone [none left]; the tab stays; I brings it back; from I, the tab brings the HUD back",
+   "hands": "the window going fullscreen, the screen staying awake, Esc out of fullscreen bringing the HUD back, and coming back to the tab keeping the screen awake",
+   "seconds": 3
+  },
+  {
+   "id": "hud.hide",
+   "where": "pc",
+   "group": "Immerse and Hide",
+   "status": "PASS",
+   "got": "no Hide button; H hides everything; the tab can be pressed; the tab brings them back; H hides; H shows",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "hud.hide",
+   "where": "phone",
+   "group": "Immerse and Hide",
+   "status": "PASS",
+   "got": "no Hide button; H hides everything; the tab can be pressed; the tab brings them back; H hides; H shows",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "tell.report",
+   "where": "pc",
+   "group": "Tell Nate",
+   "status": "NEEDS HIS HANDS",
+   "got": "the card opens; typing presses no keys of the app; the bubble says copied [Report copied. Paste it to Nate.]; the clipboard holds the report [version α1.5a]; with the window it was in [window 1600×900 @1x]; Save writes ayvee-report.txt [ayvee-report.txt]; no share sheet here: Share saves the report; Close puts the card away",
+   "hands": "the phone's real share sheet; and Copy when the build is opened as a file, where a browser may refuse the clipboard and save the report instead",
+   "seconds": 7
+  },
+  {
+   "id": "tell.report",
+   "where": "phone",
+   "group": "Tell Nate",
+   "status": "NEEDS HIS HANDS",
+   "got": "the card opens; typing presses no keys of the app; the bubble says copied [Report copied. Paste it to Nate.]; the clipboard holds the report [version α1.5a]; with the window it was in [window 402×874 @3x]; Save writes ayvee-report.txt [ayvee-report.txt]; no share sheet here: Share saves the report; Close puts the card away",
+   "hands": "the phone's real share sheet; and Copy when the build is opened as a file, where a browser may refuse the clipboard and save the report instead",
+   "seconds": 10
+  },
+  {
+   "id": "guide.open",
+   "where": "pc",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "the guide opens; it says where you stand [Level 3. 240 Echoes gathered, 0 songs finished, 0 minutes in]; the index has every step [11 lines]; Back to it closes it",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "guide.open",
+   "where": "phone",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "the guide opens; it says where you stand [Level 3. 240 Echoes gathered, 0 songs finished, 0 minutes in]; the index has every step [8 lines]; Back to it closes it",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "guide.index",
+   "where": "pc",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "The embodiments [#rail]; Your songs [#rail]; Play [#rail]; Pelvy [#track]; Focus [#transport]; The mood [#mode]; Layers [#layersBtn]; Clip [#layersBtn]; Tell Nate [#tellBtn]; Your hands [#tellBtn]; This ? brings it back [#legendBtn]",
+   "hands": "",
+   "seconds": 13
+  },
+  {
+   "id": "guide.index",
+   "where": "phone",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "The embodiments [#rail]; Your songs [#rail]; Play [#transport]; Pelvy [#transport]; Focus [#transport]; Ears [#moreBtn]; Layers [#layersBtn]; This ? brings it back [#legendBtn]",
+   "hands": "",
+   "seconds": 9
+  },
+  {
+   "id": "tour.walk",
+   "where": "pc",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "the guide steps aside; the slid pane is back for the tour; keys do nothing during the tour; it starts at 1 of 11 [1 of 11]; step 1 (The embodiments) [1 of 11]; step 1 button; step 2 (Your songs) [2 of 11]; step 2 button; step 3 (Play) [3 of 11]; step 3 button; step 4 (Pelvy) [4 of 11]; step 4 button; step 5 (Focus) [5 of 11]; step 5 button; step 6 (The mood) [6 of 11]; step 6 button; step 7 (Layers) [7 of 11]; step 7 button; step 8 (Clip) [8 of 11]; step 8 button; step 9 (Tell Nate) [9 of 11]; step 9 button; step 10 (Your hands) [10 of 11]; step 10 button; step 11 (This ? brings it back) [11 of 11]; step 11 button; done ends it and says where it lives [The tour lives under ? now.]; back goes back [2 of 11]; skip ends it quietly []; Esc ends it",
+   "hands": "",
+   "seconds": 18
+  },
+  {
+   "id": "tour.walk",
+   "where": "phone",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "the guide steps aside; the slid pane is back for the tour; keys do nothing during the tour; it starts at 1 of 8 [1 of 8]; step 1 (The embodiments) [1 of 8]; step 1 button; step 2 (Your songs) [2 of 8]; step 2 button; step 3 (Play) [3 of 8]; step 3 button; step 4 (Pelvy) [4 of 8]; step 4 button; step 5 (Focus) [5 of 8]; step 5 button; step 6 (Ears) [6 of 8]; step 6 button; step 7 (Layers) [7 of 8]; step 7 button; step 8 (This ? brings it back) [8 of 8]; step 8 button; done ends it and says where it lives [The tour lives under ? now.]; back goes back [2 of 8]; skip ends it quietly []; Esc ends it",
+   "hands": "",
+   "seconds": 15
+  },
+  {
+   "id": "keys.escape",
+   "where": "pc",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "Layers and Tell Nate close; the guide closes; the ? card closes",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "keys.escape",
+   "where": "phone",
+   "group": "The guide and the tour",
+   "status": "PASS",
+   "got": "Layers and Tell Nate close; the guide closes; the ? card closes",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "slide.title",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "slide.title",
+   "where": "phone",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "slide.meter",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "slide.meter",
+   "where": "phone",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "slide.rail",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "slide.rail",
+   "where": "phone",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "slide.track",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "slide.transport",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "slide.pelvy",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "slide.tools",
+   "where": "pc",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "the arrow can be pressed; the pane is off screen; a tab is left and can be pressed; remembered after a reload; the tab brings it back",
+   "hands": "",
+   "seconds": 4
+  },
+  {
+   "id": "slide.phoneDock",
+   "where": "phone",
+   "group": "Slide-away",
+   "status": "PASS",
+   "got": "no arrow on the dock [none]",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "stage.tap.bode",
+   "where": "pc",
+   "group": "The stage",
+   "status": "PASS",
+   "got": "taps earn [0/100 to 2/100]; the stage answers [8.68 apart]",
+   "hands": "",
+   "seconds": 22
+  },
+  {
+   "id": "stage.tap.tyde",
+   "where": "pc",
+   "group": "The stage",
+   "status": "PASS",
+   "got": "taps earn [1/100 to 3/100]; the stage answers [19.61 apart]",
+   "hands": "",
+   "seconds": 14
+  },
+  {
+   "id": "stage.tap.hinge",
+   "where": "pc",
+   "group": "The stage",
+   "status": "PASS",
+   "got": "taps earn [1/100 to 3/100]; the stage answers [0.31 apart]",
+   "hands": "",
+   "seconds": 13
+  },
+  {
+   "id": "stage.tap.cyn",
+   "where": "pc",
+   "group": "The stage",
+   "status": "PASS",
+   "got": "taps earn [1/100 to 3/100]; the stage answers [1.80 apart]",
+   "hands": "",
+   "seconds": 10
+  },
+  {
+   "id": "stage.tapCap",
+   "where": "pc",
+   "group": "The stage",
+   "status": "PASS",
+   "got": "capped at thirty [30/100]",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "keys.capitals",
+   "where": "pc",
+   "group": "The keys",
+   "status": "PASS",
+   "got": "H hides; D opens Layers; I immerses; M answers [Record first, then Mark.]; R answers [Play something first, then Record.]; F fires one [2 left]; S fires everything [0 left]; C starts a clip; C saves it",
+   "hands": "",
+   "seconds": 5
+  },
+  {
+   "id": "keys.withCtrl",
+   "where": "pc",
+   "group": "The keys",
+   "status": "PASS",
+   "got": "nothing happened",
+   "hands": "",
+   "seconds": 1
+  },
+  {
+   "id": "window.resize",
+   "where": "pc",
+   "group": "The window",
+   "status": "PASS",
+   "got": "the stage refits; the tab stays in the window; narrow: the phone layout; wide again: the computer layout, the meter still away",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "window.kept",
+   "where": "pc",
+   "group": "The window",
+   "status": "PASS",
+   "got": "kept [1/100 Lv 3 2 pips]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "window.kept",
+   "where": "phone",
+   "group": "The window",
+   "status": "PASS",
+   "got": "kept [1/100 Lv 3 2 pips]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "phone.songs",
+   "where": "phone",
+   "group": "The phone's drawers",
+   "status": "PASS",
+   "got": "it opens; #track .filebtn can be reached; #linkBtn can be reached; #url can be reached; #loadUrl can be reached; #stopTrack can be reached; #closeTrack can be reached; #volP can be reached; #repeatP can be reached; Close shuts it; the button shuts it too; a tap on the stage shuts it",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "phone.more",
+   "where": "phone",
+   "group": "The phone's drawers",
+   "status": "PASS",
+   "got": "it opens; every control can be reached [all 5]; the Lab takes its place; Layers takes its place; a tap on the stage shuts it",
+   "hands": "",
+   "seconds": 3
+  },
+  {
+   "id": "queue.rows",
+   "where": "pc",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "every song is a row, names cleaned [⋮⋮1test one×⋮⋮2test two×⋮⋮3test three×]; a tap plays that song [test three.wav]; a tap on the one playing pauses it; x drops it; the playing one plays on [1. test one.wav2. test three.wav]; the grip drags it; the playing one stays marked [1. test three.wav2. test one.wav]",
+   "hands": "",
+   "seconds": 6
+  },
+  {
+   "id": "queue.rows",
+   "where": "phone",
+   "group": "The songs",
+   "status": "PASS",
+   "got": "every song is a row, names cleaned [⋮⋮1test one×⋮⋮2test two×⋮⋮3test three×]; a tap plays that song [test three.wav]; a tap on the one playing pauses it; x drops it; the playing one plays on [1. test one.wav2. test three.wav]; the grip drags it; the playing one stays marked [1. test three.wav2. test one.wav]",
+   "hands": "",
+   "seconds": 7
+  },
+  {
+   "id": "clip.length",
+   "where": "pc",
+   "group": "Clip",
+   "status": "NEEDS HIS HANDS",
+   "got": "2x lights alone and is said [2 / Clip length: 2 minutes.]; 3x lights alone and is said [3 / Clip length: 3 minutes.]; 1x lights alone and is said [1 / Clip length: 1 minute.]; 3x lights alone and is said [3 / Clip length: 3 minutes.]; remembered after a reload; a clip at 2x says two minutes [Recording the stage (up to 2 minutes). C or Stop clip to finish.]",
+   "hands": "a real 2 and 3 minute clip on his PC, saved and opened in Edits (about 450 and 675 MB in memory while it records)",
+   "seconds": 7
+  },
+  {
+   "id": "hud.touchable",
+   "where": "pc",
+   "group": "Immerse and Hide",
+   "status": "PASS",
+   "got": "nothing pretends to be a control [none]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "hud.touchable",
+   "where": "phone",
+   "group": "Immerse and Hide",
+   "status": "PASS",
+   "got": "nothing pretends to be a control [none]",
+   "hands": "",
+   "seconds": 2
+  },
+  {
+   "id": "pelvy.catch",
+   "where": "pc",
+   "group": "Pelvy and the Echoes",
+   "status": "PASS",
+   "got": "he catches Echoes [12 caught]; each catch is a fifth of an Echo, on top of time [3.40 gained for 12 caught]; he roams, not parked [moved up to 738 px]",
+   "hands": "",
+   "seconds": 269
+  },
+  {
+   "id": "focus.release",
+   "where": "pc",
+   "group": "Focus",
+   "status": "PASS",
+   "got": "it is released; the HUD goes dark, Focus burns [title opacity 0.32]; the curve goes acute; after it, it eases back",
+   "hands": "",
+   "seconds": 281
+  }
+ ]
+}
