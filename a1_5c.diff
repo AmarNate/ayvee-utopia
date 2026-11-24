@@ -1,0 +1,222 @@
+--- pkg/ayvee-a1-5a/build/index.html	2026-11-23 22:54:24.649338288 +0100
++++ new/index.html	2026-11-24 01:53:52.083431337 +0100
+@@ -1,5 +1,5 @@
+ <!DOCTYPE html>
+-<!-- Ay-Vee · α1.5a (alpha 1.5a, the studio HUD) · 23 Nov 2026 · VeilAcute CurVessels, Patch 1.5: They Come Alive.
++<!-- Ay-Vee · α1.5c (alpha 1.5c, the studio HUD + the clip sound) · 23 Nov 2026 · VeilAcute CurVessels, Patch 1.5: They Come Alive.
+      Bod-e's body moves with the song and carries her reactions (the brace, the crumple-then-burst drop, the held
+      breath, letting go on a held note and snapping back), Pelvy fills with excitement instead of trembling and goes
+      inside her on Focus, Wren's Focus lets little wrens out over the whole screen with cinders and embers on the
+@@ -19,8 +19,8 @@
+ <head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+-<title>Ay-Vee Utopia α1.5a</title>
+-<meta name="version" content="α1.5a">
++<title>Ay-Vee Utopia α1.5c</title>
++<meta name="version" content="α1.5c">
+ <meta name="release" content="3 Oct 2026: from α1.3 - the code restructured without changing the picture, Focus no longer slows down on a slow device, one, two or three stacks each do more (F spends one, S spends all), Bod-e's ribbons drawn in tiles, the HUD as glass panes with his mark">
+ <style>
+ /* Ay-Vee Utopia α1.3.1 · the HUD wears Frequency Realism: a dark field, baby blue as structure and a
+@@ -1988,7 +1988,7 @@
+ <div id="hud">
+ <div id="title" class="blade" data-blade="tl">
+   <svg class="rune" aria-hidden="true"><use href="#rune" /></svg>
+-  <span class="wm"><b>Ay-Vee</b><span class="room">in <i>Utopia</i> · <span id="titleSub">α1.5a · BOD-E</span></span></span>
++  <span class="wm"><b>Ay-Vee</b><span class="room">in <i>Utopia</i> · <span id="titleSub">α1.5c · BOD-E</span></span></span>
+   <span class="tdots"><button id="legendBtn" class="dotb" title="Tour and guide" aria-label="Tour and guide">?</button><button id="tellBtn" class="dotb" title="Tell Nate: report something" aria-label="Tell Nate">&#9993;</button><button id="immerseP" class="dotb phone-only" title="Immerse" aria-label="Immerse">&#9974;</button></span>
+ </div>
+ 
+@@ -2192,7 +2192,7 @@
+ 
+   /* the metadata db (statute, article 2): what must not drift between builds */
+   const AV = Object.freeze({
+-    version: 'α1.5a',
++    version: 'α1.5c',
+     patch: 'VeilAcute CurVessels, Patch 1.5: They Come Alive',
+     EMB: Object.freeze([
+       Object.freeze({ id: 'bode', name: 'Bod-e', awake: true }),
+@@ -8897,7 +8897,8 @@
+       reader = null,
+       first = null;
+     if (!window.AudioEncoder || !window.MediaStreamTrackProcessor) return null;
+-    reader = new MediaStreamTrackProcessor({ track: track }).readable.getReader();
++    // α1.5c: a deep queue (about ten seconds of pieces), so a long frame no longer makes the browser drop sound
++    reader = new MediaStreamTrackProcessor({ track: track, maxBufferSize: 1000 }).readable.getReader();
+     const r = await Promise.race([reader.read(), new Promise((ok) => setTimeout(() => ok(null), 1500))]);
+     if (!r || r.done) {
+       try {
+@@ -8930,8 +8931,23 @@
+   // the clip's sound encoder: AAC (or Opus) from the song or the tab, restamped onto the picture's clock
+   function clipSound(S, acfg, reader, first, muxer) {
+     // the sound arrives with its own clock: it is restamped onto the picture's, from the moment it starts
+-    let firstIn = null;
++    let firstIn = null,
++      lastEnd = null;
+     const startAt = performance.now() - S.t0;
++    /* α1.5c: if a piece still goes missing, the hole is filled with silence of the same length, so the song never runs
++       ahead of the picture (a short quiet gap instead of a scratch and a jump) */
++    const fill = (v) => {
++      // a hole is whole pieces gone: the gap is counted in pieces, so the clock's few milliseconds of jitter fill nothing
++      const piece = (v.numberOfFrames / v.sampleRate) * 1e6,
++        missing = lastEnd === null ? 0 : Math.round((v.timestamp - lastEnd) / piece);
++      if (missing >= 1) {
++        const frames = Math.min(missing * v.numberOfFrames, v.sampleRate * 5);
++        const hush = new AudioData({ format: 'f32-planar', sampleRate: v.sampleRate, numberOfFrames: frames, numberOfChannels: v.numberOfChannels, timestamp: Math.round(lastEnd), data: new Float32Array(frames * v.numberOfChannels) });
++        if (S.aenc.state === 'configured' && !S.stopping) S.aenc.encode(hush);
++        hush.close();
++      }
++      lastEnd = v.timestamp + (v.numberOfFrames / v.sampleRate) * 1e6;
++    };
+     S.aenc = new AudioEncoder({
+       output: (chunk, meta) => {
+         if (firstIn === null) firstIn = chunk.timestamp;
+@@ -8944,6 +8960,7 @@
+     });
+     S.aenc.configure({ codec: acfg.codec, sampleRate: acfg.sampleRate, numberOfChannels: acfg.numberOfChannels, bitrate: acfg.bitrate });
+     S.reader = reader;
++    fill(first);
+     S.aenc.encode(first);
+     first.close();
+     (async () => {
+@@ -8955,6 +8972,7 @@
+           break;
+         }
+         if (r.done) break;
++        fill(r.value);
+         if (S.aenc.state === 'configured' && !S.stopping) S.aenc.encode(r.value);
+         r.value.close();
+       }
+@@ -8987,6 +9005,98 @@
+     return clipEncoderAsk;
+   }
+   setTimeout(clipEncoderReady, 3000);
++  /* α1.5a (Nate: "I hear scratching and it speeds up when it scratches ... I hear it at the beginning"): the clip's
++     sound was read on the page's own thread, the one that draws her. When a frame ran long (the clip starting, a hit,
++     a Focus), the browser dropped the sound that piled up meanwhile and the encoder glued the rest together: a click
++     at every seam, and the song running ahead of the picture (measured on the test machine: 243 holes in a 10 s clip,
++     the sound 4.6 s long against 9.9 s of picture). The sound is now read on the audio thread (an AudioWorklet), which
++     drops nothing, and every piece is stamped by its own sample count, so the sound is always as long as the song. */
++  const CLIP_TAP = "registerProcessor('clip-tap', class extends AudioWorkletProcessor {" +
++    'process(ins) { const i = ins[0]; if (i && i.length) this.port.postMessage([i[0].slice(0), (i[1] || i[0]).slice(0)]); return true; } });';
++  const CLIP_PIECE = 1024; // frames per piece handed to the encoder
++  let clipTapModule = null;
++  // the clip's sound, read where it is made: the tab's, or the song's (null for the mic, or where the browser can't)
++  async function clipTap() {
++    const src = tabbing && tabSrc ? tabSrc : actx && gain && !mic ? gain : null;
++    if (!src || !actx.audioWorklet || !window.AudioEncoder || !window.AudioData) return null;
++    /* α1.5c (his probe, opened from the file on his PC: "worklet module refused ... blob:null"): a page opened from disk
++       has no origin of its own, so it refuses its own blob: address. The worker goes in as a data: address, which a page
++       from disk and a page on the site both take; the blob: address stays as the second try. */
++    if (!clipTapModule) {
++      const data = 'data:text/javascript;charset=utf-8,' + encodeURIComponent(CLIP_TAP);
++      const blob = () => URL.createObjectURL(new Blob([CLIP_TAP], { type: 'text/javascript' }));
++      clipTapModule = actx.audioWorklet
++        .addModule(data)
++        .catch(() => actx.audioWorklet.addModule(blob()))
++        .then(() => true, () => false);
++    }
++    if (!(await clipTapModule)) return null;
++    for (const cand of [
++      { codec: 'mp4a.40.2', mux: 'aac', name: 'AAC sound' },
++      { codec: 'opus', mux: 'opus', name: 'Opus sound (some players play it mute)' },
++    ]) {
++      const cfg = { codec: cand.codec, sampleRate: actx.sampleRate, numberOfChannels: 2, bitrate: 192000 };
++      try {
++        if ((await AudioEncoder.isConfigSupported(cfg)).supported) {
++          const node = new AudioWorkletNode(actx, 'clip-tap', { channelCount: 2, channelCountMode: 'explicit' });
++          const hush = actx.createGain();
++          hush.gain.value = 0; // the tap has to be pulled by the speakers to run; it gives them silence
++          return { acfg: Object.assign(cfg, { mux: cand.mux, name: cand.name }), node, hush, src };
++        }
++      } catch (e) {}
++    }
++    return null;
++  }
++  // the tapped sound into the encoder: pieces of CLIP_PIECE frames, each stamped by how many frames came before it
++  function clipTapSound(S, tap, muxer) {
++    const rate = tap.acfg.sampleRate,
++      startAt = (performance.now() - S.t0) * 1000;
++    let frames = 0,
++      held = [],
++      n = 0;
++    S.aenc = new AudioEncoder({ output: (chunk, meta) => muxer.addAudioChunk(chunk, meta), error: (e) => (S.err = e) });
++    S.aenc.configure({ codec: tap.acfg.codec, sampleRate: rate, numberOfChannels: 2, bitrate: tap.acfg.bitrate });
++    const send = (all) => {
++      while (n >= CLIP_PIECE || (all && n > 0)) {
++        const len = Math.min(n, CLIP_PIECE),
++          data = new Float32Array(len * 2);
++        let got = 0;
++        while (got < len) {
++          const [L, R] = held[0],
++            take = Math.min(L.length, len - got);
++          data.set(L.subarray(0, take), got);
++          data.set(R.subarray(0, take), len + got);
++          if (take === L.length) held.shift();
++          else held[0] = [L.subarray(take), R.subarray(take)];
++          got += take;
++        }
++        n -= len;
++        const timestamp = Math.round(startAt + (frames * 1e6) / rate);
++        const piece = new AudioData({ format: 'f32-planar', sampleRate: rate, numberOfFrames: len, numberOfChannels: 2, timestamp, data });
++        if (S.aenc.state === 'configured') S.aenc.encode(piece);
++        piece.close();
++        frames += len;
++      }
++    };
++    tap.node.port.onmessage = (e) => {
++      if (S.stopping) return;
++      held.push(e.data);
++      n += e.data[0].length;
++      send(false);
++    };
++    tap.src.connect(tap.node);
++    tap.node.connect(tap.hush);
++    tap.hush.connect(actx.destination);
++    S.untap = () => {
++      tap.node.port.onmessage = null;
++      try {
++        tap.src.disconnect(tap.node);
++        tap.node.disconnect();
++        tap.hush.disconnect();
++      } catch (e) {}
++      send(true);
++    };
++  }
+   // the graphics card's way: H.264 + AAC into an MP4. gives null when the browser cannot, so the old way runs.
+   async function clipCodecs(track) {
+     if (!window.VideoEncoder || !window.VideoFrame || !window.Mp4Muxer) return null;
+@@ -9005,11 +9115,16 @@
+     vcfg.hardwareAcceleration = hw;
+     let acfg = null,
+       reader = null,
+-      first = null;
++      first = null,
++      tap = null;
+     if (track) {
+-      const got = await clipPickSound(track);
+-      if (!got) return null;
+-      ({ acfg, reader, first } = got);
++      tap = await clipTap();
++      if (tap) acfg = tap.acfg;
++      else {
++        const got = await clipPickSound(track);
++        if (!got) return null;
++        ({ acfg, reader, first } = got);
++      }
+     }
+     const muxer = new Mp4Muxer.Muxer({
+       target: new Mp4Muxer.ArrayBufferTarget(),
+@@ -9038,9 +9153,11 @@
+       S.venc.encode(f, { keyFrame: S.n++ % (CLIP.fps * 2) === 0 });
+       f.close();
+     };
+-    if (acfg) clipSound(S, acfg, reader, first, muxer);
++    if (tap) clipTapSound(S, tap, muxer);
++    else if (acfg) clipSound(S, acfg, reader, first, muxer);
+     // stops, empties both encoders and gives the finished MP4
+     S.finish = async () => {
++      if (S.untap) S.untap();
+       S.stopping = true;
+       try {
+         if (S.reader) await S.reader.cancel();

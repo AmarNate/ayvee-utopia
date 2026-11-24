@@ -10,6 +10,7 @@ Most visualizers react to "loudness". Ay-Vee splits a song into separate layers 
 - **Embodiments.** Named characters (Bod-e, Wren, Gali, Zeph) that each move to the music in their own way
 - **Focus.** A companion, Pelvy, gathers echoes from the song. Release them for a Focus moment; one, two or three stored echoes each release a different, bigger effect
 - **Layer reading.** Four bands, each scaled to its own range, plus a bass pulse detector that finds the beat subdivision
+- **The thread.** Hold Thread (or T) while the one element woven through a song plays; every time the song reaches it again, the embodiments feel it
 - **Listens to what you're playing.** A browser tab (YouTube, Spotify web) or the microphone
 - **Clip recorder.** Save a video of the visualizer dancing to your song, with the tab's sound
 - **Lab.** Live readouts of every layer and the frame rate, for testing
