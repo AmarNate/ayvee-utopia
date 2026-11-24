@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Ay-Vee · α1.5c (alpha 1.5c, the studio HUD + the clip sound) · 23 Nov 2026 · VeilAcute CurVessels, Patch 1.5: They Come Alive.
+<!-- Ay-Vee · α1.5d (alpha 1.5d, the studio HUD + the clip sound and picture) · 23 Nov 2026 · VeilAcute CurVessels, Patch 1.5: They Come Alive.
      Bod-e's body moves with the song and carries her reactions (the brace, the crumple-then-burst drop, the held
      breath, letting go on a held note and snapping back), Pelvy fills with excitement instead of trembling and goes
      inside her on Focus, Wren's Focus lets little wrens out over the whole screen with cinders and embers on the
@@ -19,8 +19,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Ay-Vee Utopia α1.5c</title>
-<meta name="version" content="α1.5c">
+<title>Ay-Vee Utopia α1.5d</title>
+<meta name="version" content="α1.5d">
 <meta name="release" content="3 Oct 2026: from α1.3 - the code restructured without changing the picture, Focus no longer slows down on a slow device, one, two or three stacks each do more (F spends one, S spends all), Bod-e's ribbons drawn in tiles, the HUD as glass panes with his mark">
 <style>
 /* Ay-Vee Utopia α1.3.1 · the HUD wears Frequency Realism: a dark field, baby blue as structure and a
@@ -1988,7 +1988,7 @@ body.release #pelvy .cressvg .cr { fill: rgba(var(--live-rgb), 0.3); stroke: #ea
 <div id="hud">
 <div id="title" class="blade" data-blade="tl">
   <svg class="rune" aria-hidden="true"><use href="#rune" /></svg>
-  <span class="wm"><b>Ay-Vee</b><span class="room">in <i>Utopia</i> · <span id="titleSub">α1.5c · BOD-E</span></span></span>
+  <span class="wm"><b>Ay-Vee</b><span class="room">in <i>Utopia</i> · <span id="titleSub">α1.5d · BOD-E</span></span></span>
   <span class="tdots"><button id="legendBtn" class="dotb" title="Tour and guide" aria-label="Tour and guide">?</button><button id="tellBtn" class="dotb" title="Tell Nate: report something" aria-label="Tell Nate">&#9993;</button><button id="immerseP" class="dotb phone-only" title="Immerse" aria-label="Immerse">&#9974;</button></span>
 </div>
 
@@ -2192,7 +2192,7 @@ If you want to offset all timestamps of a track such that the first one is zero,
 
   /* the metadata db (statute, article 2): what must not drift between builds */
   const AV = Object.freeze({
-    version: 'α1.5c',
+    version: 'α1.5d',
     patch: 'VeilAcute CurVessels, Patch 1.5: They Come Alive',
     EMB: Object.freeze([
       Object.freeze({ id: 'bode', name: 'Bod-e', awake: true }),
@@ -9144,12 +9144,19 @@ If you want to offset all timestamps of a track such that the first one is zero,
       error: (e) => (S.err = e),
     });
     S.venc.configure(vcfg);
-    // one picture into the encoder, at most 60 a second; skipped while the card is still busy with earlier ones
+    /* one picture into the encoder per slot of a fixed 60-a-second grid; skipped while the card is still busy.
+       α1.5d (Nate: "is it lagging occasionally?"): the old rule took a picture when 14.7 ms had passed since the last one,
+       checked once per screen refresh. On his 144 Hz screen (a refresh every 6.9 ms) two refreshes came too early and
+       the third too late, so it recorded about 48 a second and every 4th or 5th slot of the 60 came out empty (his
+       22hrs clip: 1382 skipped frames in 170 s). Now each refresh is placed on its nearest slot of the grid, and a slot
+       already filled waits: every slot is filled on any screen faster than 60 Hz, and every picture is stamped on the grid. */
+    S.slot = 0;
     S.frame = () => {
-      const now = performance.now();
-      if (now - S.last < 1000 / CLIP.fps - 2 || S.venc.state !== 'configured' || S.venc.encodeQueueSize > 4) return;
-      S.last = now;
-      const f = new VideoFrame(clipCv, { timestamp: Math.round((now - S.t0) * 1000), duration: Math.round(1e6 / CLIP.fps) });
+      const now = performance.now(),
+        k = Math.round(((now - S.t0) * CLIP.fps) / 1000);
+      if (k < S.slot || S.venc.state !== 'configured' || S.venc.encodeQueueSize > 4) return;
+      S.slot = k + 1;
+      const f = new VideoFrame(clipCv, { timestamp: Math.round((k * 1e6) / CLIP.fps), duration: Math.round(1e6 / CLIP.fps) });
       S.venc.encode(f, { keyFrame: S.n++ % (CLIP.fps * 2) === 0 });
       f.close();
     };

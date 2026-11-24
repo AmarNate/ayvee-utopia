@@ -1,5 +1,17 @@
 # Ay-Vee changelog
 
+## α1.5d · 24 Nov 2026 · the clip's picture on a 60 fps grid
+Base: α1.5c. Nate: "am I tripping or is it lagging occasionally?" His 22hrs clip: sound fixed (169.92 s against
+169.93 s of picture), but 1382 skipped frames in 170 s, mostly every 4th or 5th frame, 53 fps on average.
+- Owner: Clip took a picture when 14.7 ms had passed since the last one, checked once per screen refresh. His screen
+  is 144 Hz (confirmed): two refreshes (13.9 ms) came too early, the third (20.8 ms) too late, so it recorded about
+  48 a second and every 4th or 5th slot of the 60 came out empty. Simulated: the old rule skips ~2000 times per 170 s
+  at 144 Hz, every 4 frames.
+- Fix: each refresh is placed on its nearest slot of a fixed 60 fps grid, a filled slot waits, every picture is stamped
+  on the grid. Simulated: 0 skips at 120, 144, 165 and 240 Hz (60 Hz about as before).
+- Checks run (his call, light): the rule simulated per refresh rate; a real clip from a local file (sound holds, every
+  picture on a grid slot). Not run: the whole function check, the frame check. Only Clip code changed.
+
 ## α1.5c · 24 Nov 2026 · the clip's sound, from a file on disk
 Base: α1.5b. Nate's probe, opened from the file on his PC: "worklet module refused ... blob:null", the old reader:
 1104 holes, 11.3 s lost in a 44 s clip.
